@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "layers": {
+    "cycling-infra": {
+      "source": "mapbox://tileset-source/ofalvai/cycling-infra",
+      "minzoom": 0,
+      "maxzoom": 12,
+      "features": {
+        "simplification": [ "case",
+          [ "==", [ "zoom" ], 12 ], 0,
+          4
+        ]
+      }
+    }
+  }
+}

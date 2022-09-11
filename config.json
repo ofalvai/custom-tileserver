@@ -1,0 +1,67 @@
+{
+  "options": {
+    "paths": {
+      "root": "",
+      "styles": "styles",
+      "fonts": "fonts",
+      "mbtiles": "tiles"
+    }
+  },
+  "styles": {
+    "cycling-infra": {
+      "style": "cycling-infra/style.json",
+      "tilejson": {
+        "center": [
+          19.05232,
+          47.49211,
+          12
+        ]
+      }
+    },
+    "streets": {
+      "style": "streets/style.json",
+      "tilejson": {
+        "center": [
+          19.05232,
+          47.49211,
+          12
+        ]
+      }
+    },
+    "outdoor": {
+      "style": "outdoor/style.json",
+      "tilejson": {
+        "center": [
+          19.05232,
+          47.49211,
+          12
+        ]
+      }
+    },
+    "openstreetmap": {
+      "style": "osm/style.json",
+      "tilejson": {
+        "center": [
+          19.05232,
+          47.49211,
+          12
+        ]
+      }
+    },
+    "bikemap": {
+      "style": "bikemap/style.json",
+      "tilejson": {
+        "center": [
+          19.05232,
+          47.49211,
+          12
+        ]
+      }
+    }
+  },
+  "data": {
+    "openmaptiles-hungary": {
+      "mbtiles": "openmaptiles-hungary.mbtiles"
+    }
+  }
+}
