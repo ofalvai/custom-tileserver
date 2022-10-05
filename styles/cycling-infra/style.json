@@ -2472,7 +2472,7 @@
       "source-layer": "cycling-infra",
       "filter": [
         "any",
-        ["in", "cycleway", "share_busway", "shared_lane"],
+        ["in", "cycleway", "share_busway", "shared_lane", "opposite"],
         ["in", "cycleway:left", "share_busway", "shared_lane"],
         ["in", "cycleway:right", "share_busway", "shared_lane"],
         ["in", "cycleway:both", "share_busway", "shared_lane"]

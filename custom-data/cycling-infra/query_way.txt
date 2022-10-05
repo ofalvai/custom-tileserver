@@ -18,7 +18,7 @@
   way["cycleway:both"=lane](area.boundaryarea);
   
   // shared infra  
-  way[cycleway~"share_busway|shared_lane"](area.boundaryarea);
+  way[cycleway~"share_busway|shared_lane|opposite"](area.boundaryarea);
   way["cycleway:right"~"share_busway|shared_lane"](area.boundaryarea);
   way["cycleway:left"~"share_busway|shared_lane"](area.boundaryarea);
   way["cycleway:both"~"share_busway|shared_lane"](area.boundaryarea);
