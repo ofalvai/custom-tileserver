@@ -2474,7 +2474,8 @@
         "any",
         ["in", "cycleway", "share_busway", "shared_lane"],
         ["in", "cycleway:left", "share_busway", "shared_lane"],
-        ["in", "cycleway:right", "share_busway", "shared_lane"]
+        ["in", "cycleway:right", "share_busway", "shared_lane"],
+        ["in", "cycleway:both", "share_busway", "shared_lane"]
       ],
       "layout": {"visibility": "visible"},
       "paint": {
@@ -2491,7 +2492,11 @@
       "filter": [
         "any",
         ["==", "highway", "cycleway"],
-        ["in", "bicycle", "designated", "official"]
+        ["in", "bicycle", "designated", "official"],
+        ["==", "cycleway", "track"],
+        ["==", "cycleway:left", "track"],
+        ["==", "cycleway:right", "track"],
+        ["==", "cycleway:both", "track"]
       ],
       "layout": {"visibility": "visible"},
       "paint": {
@@ -2510,7 +2515,7 @@
         ["==", "cycleway", "lane"],
         ["==", "cycleway:left", "lane"],
         ["==", "cycleway:right", "lane"],
-        ["in", "bicycle", "permissive", "yes"]
+        ["==", "cycleway:both", "lane"]
       ],
       "layout": {"visibility": "visible"},
       "paint": {
@@ -5395,6 +5400,53 @@
           "continent"
         ]
       ]
+    },
+    {
+      "id": "bicycle_repair",
+      "type": "circle",
+      "source": "cycling-infra",
+      "source-layer": "cycling-poi",
+      "minzoom": 13,
+      "filter": ["all", ["==", "amenity", "bicycle_repair_station"]],
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "circle-color": "rgba(130, 0, 0, 1)",
+        "circle-opacity": {"stops": [[13, 1], [16, 1]]},
+        "circle-stroke-width": 2,
+        "circle-stroke-color": "rgba(255, 255, 255, 1)",
+        "circle-radius": {"stops": [[13, 2], [18, 6]]}
+      }
+    },
+    {
+      "id": "bicycle_parking",
+      "type": "circle",
+      "source": "cycling-infra",
+      "source-layer": "cycling-poi",
+      "minzoom": 16,
+      "filter": ["all", ["==", "amenity", "bicycle_parking"]],
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "circle-color": "rgba(7, 83, 0, 1)",
+        "circle-opacity": {"stops": [[13, 0.3], [16, 1]]},
+        "circle-radius": 3,
+        "circle-stroke-width": 0
+      }
+    },
+    {
+      "id": "drinking_water_symbol",
+      "type": "symbol",
+      "source": "cycling-infra",
+      "source-layer": "cycling-poi",
+      "minzoom": 13,
+      "filter": [
+        "any",
+        ["==", "amenity", "drinking_water"]
+      ],
+      "layout": {
+        "icon-image": "drinking-water",
+        "icon-allow-overlap": true,
+        "icon-ignore-placement": true
+      }
     }
   ]
 }

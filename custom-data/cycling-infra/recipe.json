@@ -11,6 +11,11 @@
           4
         ]
       }
+    },
+    "cycling-poi": {
+      "source": "mapbox://tileset-source/ofalvai/cycling-poi",
+      "minzoom": 0,
+      "maxzoom": 12
     }
   }
 }
