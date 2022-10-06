@@ -2466,6 +2466,21 @@
       ]
     },
     {
+      "id": "cycle_network",
+      "type": "line",
+      "source": "cycling-infra",
+      "source-layer": "cycling-network",
+      "paint": {
+        "line-color": "rgba(0, 40, 248, 1)",
+        "line-width": {
+          "stops": [[6, 2], [13, 5]],
+          "base": 2
+        },
+        "line-opacity": 0.3
+      },
+      "layout": {"visibility": "visible"}
+    },
+    {
       "id": "cycle_shared",
       "type": "line",
       "source": "cycling-infra",

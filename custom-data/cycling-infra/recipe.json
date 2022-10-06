@@ -12,6 +12,17 @@
         ]
       }
     },
+    "cycling-network": {
+      "source": "mapbox://tileset-source/ofalvai/cycling-network",
+      "minzoom": 0,
+      "maxzoom": 12,
+      "features": {
+        "simplification": [ "case",
+          [ "==", [ "zoom" ], 12 ], 0,
+          4
+        ]
+      }
+    },
     "cycling-poi": {
       "source": "mapbox://tileset-source/ofalvai/cycling-poi",
       "minzoom": 0,
