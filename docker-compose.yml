@@ -1,7 +1,14 @@
 version: "3.9"
 services:
   tileserver:
-    build: .
+    build: ./tileserver
     ports:
       - "8080:8080"
+    restart: unless-stopped
+  viewer:
+    build: ./viewer
+    depends_on:
+      - tileserver
+    ports:
+      - "8081:3000"
     restart: unless-stopped

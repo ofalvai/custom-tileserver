@@ -1,6 +1,6 @@
 FROM node:16-bullseye
 
-VOLUME /data
+COPY . /data
 WORKDIR /data
 
 RUN npm install -g tileserver-gl-light
