@@ -8,8 +8,8 @@ COPY . .
 RUN npm install
 RUN npm run build
 
-FROM lipanski/docker-static-website:latest
+FROM busybox:1.35
 
 COPY --from=builder /data/dist .
 
-CMD ["/busybox", "httpd", "-f", "-v", "-p", "3000"]
+CMD ["busybox", "httpd", "-f", "-v", "-p", "3000"]
