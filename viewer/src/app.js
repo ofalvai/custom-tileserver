@@ -13,7 +13,8 @@ const map = new mapboxgl.Map({
     style: process.env.TILESERVER_BASE_URL + '/styles/cycling-infra/style.json',
     center: [19.04571, 47.46287],
     zoom: 13,
-    projection: 'globe'
+    projection: 'globe',
+    hash: true,
 });
 
 map.on('style.load', () => {
