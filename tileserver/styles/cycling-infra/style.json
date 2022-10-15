@@ -5452,7 +5452,7 @@
       "type": "symbol",
       "source": "cycling-infra",
       "source-layer": "cycling-poi",
-      "minzoom": 13,
+      "minzoom": 14,
       "filter": [
         "any",
         ["==", "amenity", "drinking_water"]
