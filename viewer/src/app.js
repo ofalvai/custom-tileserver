@@ -68,3 +68,35 @@ map.addControl(
 )
 
 map.addControl(new InspectControl(), 'bottom-right');
+
+class IDEditorLinkControl {
+    onAdd(map) {
+        this._map = map;
+        this._container = document.createElement('div');
+        this._container.className = 'mapboxgl-ctrl mapboxgl-ctrl-group';
+        this._container.addEventListener('click', (e) => this.onClick(map));
+
+        this._container.innerHTML =
+            '<div class="tools-box">' +
+            '<button>' +
+            '<span class="mapboxgl-ctrl-icon id-editor-button" aria-hidden="true" title="Open iD editor here">iD</span>' +
+            '</button>' +
+            '</div>';
+
+        return this._container;
+    }
+
+    onRemove() {
+        this._container.parentNode.removeChild(this._container);
+        this._map = undefined;
+    }
+
+    onClick(map) {
+        const center = map.getCenter();
+        const zoom = map.getZoom();
+        const url = `https://www.openstreetmap.org/edit#map=${zoom}/${center.lat}/${center.lng}`;
+        window.open(url, "_blank");
+    }
+}
+
+map.addControl(new IDEditorLinkControl(), 'bottom-right');
