@@ -54,55 +54,6 @@
       }
     },
     {
-      "id": "landscape",
-      "type": "fill",
-      "source": "openmaptiles",
-      "source-layer": "globallandcover",
-      "maxzoom": 8.0,
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "fill-color": [
-          "match",
-          [
-            "get",
-            "class"
-          ],
-          "crop",
-          "hsl(50,67%,86%)",
-          "scrub",
-          "hsl(97,51%,80%)",
-          "grass",
-          "hsl(75,51%,85%)",
-          "hsl(0,0%,100%)"
-        ],
-        "fill-opacity": {
-          "stops": [
-            [
-              0,
-              1
-            ],
-            [
-              8,
-              0.1
-            ]
-          ]
-        },
-        "fill-antialias": true
-      },
-      "filter": [
-        "all",
-        [
-          "in",
-          "class",
-          "crop",
-          "grass",
-          "scrub"
-        ]
-      ]
-    },
-    {
       "id": "snow",
       "type": "fill",
       "source": "openmaptiles",
@@ -133,52 +84,6 @@
           "==",
           "class",
           "ice"
-        ]
-      ]
-    },
-    {
-      "id": "forest",
-      "type": "fill",
-      "source": "openmaptiles",
-      "source-layer": "globallandcover",
-      "maxzoom": 8.0,
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "fill-color": [
-          "match",
-          [
-            "get",
-            "class"
-          ],
-          "forest",
-          "hsl(119,38%,76%)",
-          "tree",
-          "hsl(99,42%,76%)",
-          "hsl(0,0%,100%)"
-        ],
-        "fill-opacity": {
-          "stops": [
-            [
-              1,
-              0.8
-            ],
-            [
-              8,
-              0
-            ]
-          ]
-        },
-        "fill-antialias": true
-      },
-      "filter": [
-        "all",
-        [
-          "in",
-          "class",
-          "forest",
-          "tree"
         ]
       ]
     },
@@ -2487,14 +2392,14 @@
       "source-layer": "cycling-infra",
       "filter": [
         "any",
-        ["in", "cycleway", "share_busway", "shared_lane", "opposite"],
+        ["in", "cycleway", "share_busway", "shared_lane", "opposite_lane"],
         ["in", "cycleway:left", "share_busway", "shared_lane"],
         ["in", "cycleway:right", "share_busway", "shared_lane"],
         ["in", "cycleway:both", "share_busway", "shared_lane"]
       ],
       "layout": {"visibility": "visible"},
       "paint": {
-        "line-color": "rgba(31, 136, 2, 1)",
+        "line-color": "rgba(26, 184, 102, 1)",
         "line-width": {"stops": [[6, 2], [13, 3], [15, 4]], "base": 2},
         "line-dasharray": [1, 1]
       }

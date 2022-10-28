@@ -3,6 +3,8 @@
 area["name"="Magyarország"]->.boundaryarea;
   
 rel[route=bicycle](area.boundaryarea);
-way[highway!=cycleway][bicycle!=designated][!"cycleway"][!"cycleway:left"][!"cycleway:right"][!"cycleway:both"](r);
-
+(
+  way[highway!=cycleway][bicycle!=designated][!"cycleway"][!"cycleway:left"][!"cycleway:right"][!"cycleway:both"](r);
+  way[cycleway=no](r);
+);
 out geom;
