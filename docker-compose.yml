@@ -2,6 +2,8 @@ version: "3.9"
 services:
   tileserver:
     build: ./tileserver
+    volumes:
+      - ./tileserver:/data
     ports:
       - "8080:8080"
     restart: unless-stopped

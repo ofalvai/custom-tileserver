@@ -1,10 +1,10 @@
-FROM node:16-bullseye
+FROM node:19-alpine
 
-COPY . /data
-WORKDIR /data
+VOLUME /data
 
-RUN npm install -g tileserver-gl-light
+WORKDIR /app
+
+RUN npm install -g tileserver-gl-light@4.1.1
 
 EXPOSE 8080
-
-CMD ["tileserver-gl-light"]
+CMD tileserver-gl-light --config /data/config.json

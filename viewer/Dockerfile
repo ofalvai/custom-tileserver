@@ -1,15 +1,15 @@
-FROM node:16-bullseye as builder
+FROM node:19 as builder
 
-VOLUME /data
-WORKDIR /data
+WORKDIR /app
 
-COPY . .
+COPY package*.json ./
+RUN npm ci
 
-RUN npm install
+COPY src src
 RUN npm run build
 
 FROM busybox:1.35
 
-COPY --from=builder /data/dist .
+COPY --from=builder /app/dist .
 
 CMD ["busybox", "httpd", "-f", "-v", "-p", "3000"]
