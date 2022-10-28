@@ -6,6 +6,7 @@ COPY package*.json ./
 RUN npm ci
 
 COPY src src
+COPY .env .env
 RUN npm run build
 
 FROM busybox:1.35
