@@ -2,6 +2,7 @@ version: "3.9"
 services:
   tileserver:
     build: ./tileserver
+    init: true
     volumes:
       - ./tileserver:/data
     ports:
@@ -9,6 +10,7 @@ services:
     restart: unless-stopped
   viewer:
     build: ./viewer
+    init: true
     depends_on:
       - tileserver
     ports:

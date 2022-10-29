@@ -1,5 +1,7 @@
 FROM node:19 as builder
 
+USER node
+
 WORKDIR /app
 
 COPY package*.json ./
