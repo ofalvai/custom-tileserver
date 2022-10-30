@@ -2376,14 +2376,25 @@
       "source": "cycling-infra",
       "source-layer": "cycling-network",
       "paint": {
-        "line-color": "rgba(0, 40, 248, 1)",
+        "line-color": "rgba(15, 0, 255, 1)",
         "line-width": {
-          "stops": [[6, 2], [13, 5]],
+          "stops": [
+            [6, 3],
+            [13, 3],
+            [15, 4]
+          ],
           "base": 2
         },
-        "line-opacity": 0.3
+        "line-opacity": {
+          "stops": [[9, 0.4], [13, 0.25]]
+        }
       },
-      "layout": {"visibility": "visible"}
+      "layout": {
+        "visibility": "visible",
+        "line-cap": "butt",
+        "line-join": "round"
+      },
+      "filter": ["all"]
     },
     {
       "id": "cycle_shared",
@@ -2392,15 +2403,45 @@
       "source-layer": "cycling-infra",
       "filter": [
         "any",
-        ["in", "cycleway", "share_busway", "shared_lane", "opposite_lane"],
-        ["in", "cycleway:left", "share_busway", "shared_lane"],
-        ["in", "cycleway:right", "share_busway", "shared_lane"],
-        ["in", "cycleway:both", "share_busway", "shared_lane"]
+        [
+          "in",
+          "cycleway",
+          "share_busway",
+          "shared_lane"
+        ],
+        [
+          "in",
+          "cycleway:left",
+          "share_busway",
+          "shared_lane"
+        ],
+        [
+          "in",
+          "cycleway:right",
+          "share_busway",
+          "shared_lane"
+        ],
+        [
+          "in",
+          "cycleway:both",
+          "share_busway",
+          "shared_lane"
+        ]
       ],
-      "layout": {"visibility": "visible"},
+      "layout": {
+        "visibility": "visible",
+        "line-cap": "butt"
+      },
       "paint": {
         "line-color": "rgba(26, 184, 102, 1)",
-        "line-width": {"stops": [[6, 2], [13, 3], [15, 4]], "base": 2},
+        "line-width": {
+          "stops": [
+            [6, 2],
+            [13, 3],
+            [15, 4]
+          ],
+          "base": 2
+        },
         "line-dasharray": [1, 1]
       }
     },
@@ -2412,17 +2453,34 @@
       "filter": [
         "any",
         ["==", "highway", "cycleway"],
-        ["in", "bicycle", "designated", "official"],
+        [
+          "in",
+          "bicycle",
+          "designated",
+          "official"
+        ],
         ["==", "cycleway", "track"],
         ["==", "cycleway:left", "track"],
         ["==", "cycleway:right", "track"],
         ["==", "cycleway:both", "track"]
       ],
-      "layout": {"visibility": "visible"},
+      "layout": {
+        "visibility": "visible",
+        "line-cap": "round",
+        "line-join": "round"
+      },
       "paint": {
         "line-color": "rgba(7, 119, 62, 1)",
         "line-opacity": 1,
-        "line-width": {"stops": [[6, 2], [13, 3], [15, 4]], "base": 2}
+        "line-width": {
+          "stops": [
+            [6, 2],
+            [13, 3],
+            [15, 4]
+          ],
+          "base": 2
+        },
+        "line-blur": 0
       }
     },
     {
@@ -2437,11 +2495,21 @@
         ["==", "cycleway:right", "lane"],
         ["==", "cycleway:both", "lane"]
       ],
-      "layout": {"visibility": "visible"},
+      "layout": {
+        "visibility": "visible",
+        "line-cap": "round"
+      },
       "paint": {
         "line-opacity": 1,
         "line-color": "rgba(26, 184, 102, 1)",
-        "line-width": {"stops": [[6, 2], [13, 3], [15, 4]], "base": 2}
+        "line-width": {
+          "stops": [
+            [6, 2],
+            [13, 3],
+            [15, 4]
+          ],
+          "base": 2
+        }
       }
     },
     {
@@ -3439,50 +3507,10 @@
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "transportation",
-      "minzoom": 16.0,
-      "layout": {
-        "icon-size": {
-          "stops": [
-            [
-              16,
-              0.7
-            ],
-            [
-              18,
-              1
-            ]
-          ]
-        },
-        "text-font": [
-          "Roboto Regular",
-          "Open Sans Regular"
-        ],
-        "icon-image": "oneway",
-        "visibility": "visible",
-        "icon-rotate": [
-          "match",
-          [
-            "get",
-            "oneway"
-          ],
-          1,
-          90,
-          -90
-        ],
-        "icon-padding": 2,
-        "symbol-spacing": 75,
-        "symbol-placement": "line",
-        "icon-rotation-alignment": "map"
-      },
-      "paint": {
-        "icon-opacity": 0.5
-      },
+      "minzoom": 15,
       "filter": [
         "all",
-        [
-          "has",
-          "oneway"
-        ],
+        ["has", "oneway"],
         [
           "in",
           "class",
@@ -3494,7 +3522,33 @@
           "minor",
           "service"
         ]
-      ]
+      ],
+      "layout": {
+        "icon-size": {
+          "stops": [[16, 0.8], [17, 1]]
+        },
+        "text-font": [
+          "Roboto Regular",
+          "Open Sans Regular"
+        ],
+        "icon-image": "oneway",
+        "visibility": "visible",
+        "icon-rotate": [
+          "match",
+          ["get", "oneway"],
+          1,
+          90,
+          -90
+        ],
+        "icon-padding": 2,
+        "symbol-spacing": 75,
+        "symbol-placement": "line",
+        "icon-rotation-alignment": "map"
+      },
+      "paint": {
+        "text-halo-width": 0,
+        "icon-opacity": 1
+      }
     },
     {
       "id": "road",
