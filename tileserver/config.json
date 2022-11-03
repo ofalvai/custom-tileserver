@@ -71,7 +71,7 @@
   },
   "data": {
     "openmaptiles-hungary": {
-      "mbtiles": "planetiler-hungary.mbtiles"
+      "mbtiles": "openmaptiles-hungary-14.mbtiles"
     },
     "openmaptiles-hungary-cycling": {
       "mbtiles": "planetiler-hungary-cycling.mbtiles"
