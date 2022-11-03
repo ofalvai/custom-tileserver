@@ -18,6 +18,16 @@
         ]
       }
     },
+    "cycling-infra-new": {
+      "style": "cycling-infra-new/style.json",
+      "tilejson": {
+        "center": [
+          19.05232,
+          47.49211,
+          12
+        ]
+      }
+    },
     "streets": {
       "style": "streets/style.json",
       "tilejson": {
@@ -61,7 +71,13 @@
   },
   "data": {
     "openmaptiles-hungary": {
-      "mbtiles": "openmaptiles-hungary-14.mbtiles"
+      "mbtiles": "planetiler-hungary.mbtiles"
+    },
+    "openmaptiles-hungary-cycling": {
+      "mbtiles": "planetiler-hungary-cycling.mbtiles"
+    },
+    "openmaptiles-europe-cycling": {
+      "mbtiles": "planetiler-europe-cycling.mbtiles"
     }
   }
 }
