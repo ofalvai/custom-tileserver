@@ -10,7 +10,7 @@ import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 mapboxgl.accessToken = process.env.MAPBOX_TOKEN;
 const map = new mapboxgl.Map({
     container: 'map',
-    style: process.env.TILESERVER_BASE_URL + '/styles/cycling-infra/style.json',
+    style: process.env.TILESERVER_BASE_URL + '/styles/cycling-infra-new/style.json',
     center: [19.04571, 47.46287],
     zoom: 13,
     projection: 'globe',
@@ -31,7 +31,7 @@ map.addControl(new StylesControl({
         {
             label: 'Cycling infra',
             styleName: 'Cycling infra',
-            styleUrl: process.env.TILESERVER_BASE_URL + '/styles/cycling-infra/style.json',
+            styleUrl: process.env.TILESERVER_BASE_URL + '/styles/cycling-infra-new/style.json',
         },
         {
             label: 'Streets',
