@@ -4,7 +4,7 @@
   "name": "Cycling infra",
   "sources": {
     "openmaptiles": {
-      "url": "https://api.maptiler.com/tiles/v3-openmaptiles/tiles.json?key=sW0BvlM0vgtQpnlyOQXw",
+      "url": "mbtiles://{openmaptiles-hungary}",
       "type": "vector"
     },
     "cycling-infra": {
