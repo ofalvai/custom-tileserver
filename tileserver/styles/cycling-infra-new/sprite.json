@@ -1013,5 +1013,12 @@
         "x": 93,
         "y": 188,
         "pixelRatio": 1.0
+    },
+    "bubi": {
+        "width": 16,
+        "height": 16,
+        "x": 99,
+        "y": 188,
+        "pixelRatio": 1.0
     }
 }

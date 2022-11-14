@@ -3961,6 +3961,19 @@
             "zoom"
           ],
           0,
+          13,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "bicycle"
+            ],
+            1,
+            0
+          ],
           15,
           [
             "match",
@@ -3970,6 +3983,7 @@
             ],
             [
               "aerialway",
+              "bicycle",
               "castle",
               "cemetery",
               "diplomatic",
@@ -3993,6 +4007,7 @@
               "class"
             ],
             [
+              "bicycle",
               "castle",
               "cemetery",
               "town_hall",
@@ -4145,6 +4160,22 @@
       ],
       "layout": {
         "icon-image": "drinking-water",
+        "icon-allow-overlap": true,
+        "icon-ignore-placement": true
+      }
+    },
+    {
+      "id": "bubi",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "cycling_poi",
+      "minzoom": 13,
+      "filter": [
+        "any",
+        ["==", "class", "bicycle_rental"]
+      ],
+      "layout": {
+        "icon-image": "bubi",
         "icon-allow-overlap": true,
         "icon-ignore-placement": true
       }
