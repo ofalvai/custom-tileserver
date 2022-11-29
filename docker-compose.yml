@@ -2,14 +2,16 @@ version: "3.9"
 services:
   tileserver:
     build: ./tileserver
+    container_name: map-tileserver
     init: true
     volumes:
       - ./tileserver:/data
     ports:
       - "8080:8080"
     restart: unless-stopped
-  viewer:
-    build: ./viewer
+  frontend:
+    build: ./frontend
+    container_name: map-frontend
     init: true
     depends_on:
       - tileserver
