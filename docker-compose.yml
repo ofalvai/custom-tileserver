@@ -1,4 +1,10 @@
 version: "3.9"
+
+networks:
+  traefik:
+    name: traefik
+    external: true
+
 services:
   tileserver:
     build: ./tileserver
@@ -8,6 +14,19 @@ services:
       - ./tileserver:/data
     ports:
       - "8080:8080"
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.map-tileserver.rule=Host(`tileserver.oliverfalvai.xyz`)"
+      - "traefik.http.routers.map-tileserver.entrypoints=web-secure"
+      - "traefik.http.routers.map-tileserver.tls=true"
+      - "traefik.http.routers.map-tileserver.tls.certResolver=default"
+      - "traefik.http.routers.map-tileserver.service=map-tileserver"
+
+      - "traefik.http.services.map-tileserver.loadbalancer.server.port=8080"
+
+      - "traefik.http.middlewares.map-tileserver-compress.compress=true"
     restart: unless-stopped
   frontend:
     build: ./frontend
@@ -17,4 +36,18 @@ services:
       - tileserver
     ports:
       - "8081:3000"
+    networks:
+      - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.map-frontend.rule=Host(`map.oliverfalvai.xyz`)"
+      - "traefik.http.routers.map-frontend.entrypoints=web-secure"
+      - "traefik.http.routers.map-frontend.tls=true"
+      - "traefik.http.routers.map-frontend.tls.certResolver=default"
+      - "traefik.http.routers.map-frontend.service=map-frontend"
+
+      - "traefik.http.services.map-frontend.loadbalancer.server.port=3000"
+
+      - 'traefik.http.middlewares.map-frontend-add-headers.headers.customresponseheaders.Cache-Control=public,max-age=31536000,s-maxage=31536000; includeSubDomains'
+      - "traefik.http.middlewares.map-frontend-compress.compress=true"
     restart: unless-stopped
