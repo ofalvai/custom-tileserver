@@ -1,7 +1,7 @@
 {
     "version": 8,
     "id": "streets-v2",
-    "name": "MapTiler Streets",
+    "name": "Streets",
     "sources": {
         "openmaptiles": {
             "url": "https://api.maptiler.com/tiles/v3-openmaptiles/tiles.json?key=sW0BvlM0vgtQpnlyOQXw",
@@ -207,7 +207,7 @@
                     "hsl(0,0%,100%)"
                 ],
                 "fill-opacity": 0.5,
-                "fill-antialias": true
+                "fill-antialias": false
             },
             "metadata": {},
             "filter": [
@@ -231,18 +231,40 @@
                 "visibility": "visible"
             },
             "paint": {
-                "fill-color": {
-                    "stops": [
+                "fill-color": [
+                    "match",
+                    [
+                        "get",
+                        "class"
+                    ],
+                    [
+                        "industrial"
+                    ],
+                    "hsl(40,67%,90%)",
+                    "quarry",
+                    "hsla(32, 47%, 87%, 0.35)",
+                    "hsla(60, 31%, 87%, 0.75)"
+                ],
+                "fill-opacity": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    1,
+                    9,
+                    [
+                        "match",
                         [
-                            9,
-                            "hsl(40,67%,90%)"
+                            "get",
+                            "class"
                         ],
-                        [
-                            16,
-                            "hsl(49,54%,90%)"
-                        ]
-                    ]
-                }
+                        "quarry",
+                        0,
+                        1
+                    ],
+                    10,
+                    1
+                ]
             },
             "metadata": {},
             "filter": [
@@ -250,7 +272,8 @@
                 [
                     "in",
                     "class",
-                    "industrial"
+                    "industrial",
+                    "quarry"
                 ]
             ]
         },
@@ -2997,7 +3020,7 @@
             "layout": {
                 "text-font": [
                     "Roboto Italic",
-                    "Open Sans Italic"
+                    "Noto Sans Italic"
                 ],
                 "text-size": {
                     "stops": [
@@ -3015,18 +3038,7 @@
                         ]
                     ]
                 },
-                "text-field": [
-                    "concat",
-                    [
-                        "get",
-                        "name:latin"
-                    ],
-                    " ",
-                    [
-                        "get",
-                        "name:nonlatin"
-                    ]
-                ],
+                "text-field": "{name:latin}",
                 "visibility": "visible",
                 "text-offset": [
                     0,
@@ -3077,7 +3089,7 @@
             "layout": {
                 "text-font": [
                     "Roboto Italic",
-                    "Open Sans Italic"
+                    "Noto Sans Italic"
                 ],
                 "text-size": [
                     "interpolate",
@@ -3145,18 +3157,7 @@
                         26
                     ]
                 ],
-                "text-field": [
-                    "concat",
-                    [
-                        "get",
-                        "name:latin"
-                    ],
-                    "\n",
-                    [
-                        "get",
-                        "name:nonlatin"
-                    ]
-                ],
+                "text-field": "{name:latin}",
                 "visibility": "visible",
                 "text-max-width": 5,
                 "symbol-placement": "point"
@@ -3228,7 +3229,7 @@
             "layout": {
                 "text-font": [
                     "Roboto Regular",
-                    "Open Sans Regular"
+                    "Noto Sans Regular"
                 ],
                 "text-size": 10,
                 "text-field": "{housenumber}",
@@ -3250,7 +3251,7 @@
             "layout": {
                 "text-font": [
                     "Roboto Italic",
-                    "Open Sans Italic"
+                    "Noto Sans Italic"
                 ],
                 "text-size": {
                     "base": 1,
@@ -3273,18 +3274,7 @@
                         ]
                     ]
                 },
-                "text-field": [
-                    "concat",
-                    [
-                        "get",
-                        "name:latin"
-                    ],
-                    "\n",
-                    [
-                        "get",
-                        "name:nonlatin"
-                    ]
-                ],
+                "text-field": "{name:latin}",
                 "visibility": "visible",
                 "text-anchor": "center",
                 "text-offset": [
@@ -3319,7 +3309,7 @@
             "layout": {
                 "text-font": [
                     "Roboto Italic",
-                    "Open Sans Italic"
+                    "Noto Sans Italic"
                 ],
                 "text-size": {
                     "base": 1,
@@ -3334,18 +3324,7 @@
                         ]
                     ]
                 },
-                "text-field": [
-                    "concat",
-                    [
-                        "get",
-                        "name:latin"
-                    ],
-                    "\n",
-                    [
-                        "get",
-                        "name:nonlatin"
-                    ]
-                ],
+                "text-field": "{name:latin}",
                 "visibility": "visible",
                 "text-anchor": "center",
                 "text-offset": [
@@ -3390,7 +3369,7 @@
                 },
                 "text-font": [
                     "Roboto Regular",
-                    "Open Sans Regular"
+                    "Noto Sans Regular"
                 ],
                 "icon-image": "oneway",
                 "visibility": "visible",
@@ -3440,7 +3419,7 @@
             "layout": {
                 "text-font": [
                     "Roboto Regular",
-                    "Open Sans Regular"
+                    "Noto Sans Regular"
                 ],
                 "text-size": {
                     "base": 1,
@@ -3463,47 +3442,7 @@
                         ]
                     ]
                 },
-                "text-field": [
-                    "coalesce",
-                    [
-                        "match",
-                        [
-                            "get",
-                            "class"
-                        ],
-                        [
-                            "tertiary"
-                        ],
-                        [
-                            "get",
-                            "ref"
-                        ],
-                        [
-                            "concat",
-                            [
-                                "get",
-                                "name:latin"
-                            ],
-                            "\n",
-                            [
-                                "get",
-                                "name:nonlatin"
-                            ]
-                        ]
-                    ],
-                    [
-                        "concat",
-                        [
-                            "get",
-                            "name:latin"
-                        ],
-                        "\n",
-                        [
-                            "get",
-                            "name:nonlatin"
-                        ]
-                    ]
-                ],
+                "text-field": "{name:latin}",
                 "visibility": "visible",
                 "text-anchor": "center",
                 "text-offset": [
@@ -3553,7 +3492,7 @@
                 "icon-size": 1,
                 "text-font": [
                     "Roboto Regular",
-                    "Open Sans Regular"
+                    "Noto Sans Regular"
                 ],
                 "text-size": 9,
                 "icon-image": "exit_{ref_length}",
@@ -3612,13 +3551,15 @@
                     [
                         "literal",
                         [
-                            "Roboto Bold"
+                            "Roboto Bold",
+                            "Noto Sans Bold"
                         ]
                     ],
                     [
                         "literal",
                         [
-                            "Roboto Regular"
+                            "Roboto Regular",
+                            "Noto Sans Regular"
                         ]
                     ]
                 ],
@@ -3696,13 +3637,15 @@
                     [
                         "literal",
                         [
-                            "Roboto Bold"
+                            "Roboto Bold",
+                            "Noto Sans Bold"
                         ]
                     ],
                     [
                         "literal",
                         [
-                            "Roboto Regular"
+                            "Roboto Regular",
+                            "Noto Sans Regular"
                         ]
                     ]
                 ],
@@ -3779,7 +3722,7 @@
                 "icon-size": 1,
                 "text-font": [
                     "Roboto Regular",
-                    "Open Sans Regular"
+                    "Noto Sans Regular"
                 ],
                 "text-size": {
                     "stops": [
@@ -3818,18 +3761,7 @@
                         "dot"
                     ]
                 ],
-                "text-field": [
-                    "concat",
-                    [
-                        "get",
-                        "name:latin"
-                    ],
-                    "\n",
-                    [
-                        "get",
-                        "name:nonlatin"
-                    ]
-                ],
+                "text-field": "{name:latin}",
                 "visibility": "visible",
                 "text-anchor": "top",
                 "text-offset": [
@@ -4039,7 +3971,7 @@
                 },
                 "text-font": [
                     "Roboto Regular",
-                    "Open Sans Regular"
+                    "Noto Sans Regular"
                 ],
                 "text-size": [
                     "interpolate",
@@ -4097,18 +4029,7 @@
                         16
                     ]
                 ],
-                "text-field": [
-                    "concat",
-                    [
-                        "get",
-                        "name:latin"
-                    ],
-                    "\n",
-                    [
-                        "get",
-                        "name:nonlatin"
-                    ]
-                ],
+                "text-field": "{name:latin}",
                 "visibility": "visible",
                 "text-anchor": "bottom",
                 "text-offset": [
@@ -4253,7 +4174,7 @@
                 },
                 "text-font": [
                     "Roboto Medium",
-                    "Open Sans Semibold"
+                    "Noto Sans Regular"
                 ],
                 "text-size": {
                     "stops": [
@@ -4292,18 +4213,7 @@
                     "tramway",
                     ""
                 ],
-                "text-field": [
-                    "concat",
-                    [
-                        "get",
-                        "name:latin"
-                    ],
-                    "\n",
-                    [
-                        "get",
-                        "name:nonlatin"
-                    ]
-                ],
+                "text-field": "{name:latin}",
                 "visibility": "visible",
                 "text-anchor": "top",
                 "text-offset": [
@@ -4484,7 +4394,7 @@
                 ],
                 "text-font": [
                     "Roboto Medium",
-                    "Open Sans Semibold"
+                    "Noto Sans Regular"
                 ],
                 "text-size": [
                     "interpolate",
@@ -4585,7 +4495,7 @@
             "layout": {
                 "text-font": [
                     "Roboto Medium",
-                    "Open Sans Semibold"
+                    "Noto Sans Regular"
                 ],
                 "text-size": {
                     "stops": [
@@ -4627,7 +4537,7 @@
             "layout": {
                 "text-font": [
                     "Roboto Medium",
-                    "Open Sans Semibold"
+                    "Noto Sans Regular"
                 ],
                 "text-size": {
                     "stops": [
@@ -4645,18 +4555,7 @@
                         ]
                     ]
                 },
-                "text-field": [
-                    "concat",
-                    [
-                        "get",
-                        "name:latin"
-                    ],
-                    "\n",
-                    [
-                        "get",
-                        "name:nonlatin"
-                    ]
-                ],
+                "text-field": "{name:latin}",
                 "visibility": "visible",
                 "text-padding": 2,
                 "text-max-width": 8,
@@ -4665,6 +4564,41 @@
             },
             "paint": {
                 "text-color": "hsl(48,4%,44%)",
+                "text-opacity": [
+                    "step",
+                    [
+                        "zoom"
+                    ],
+                    0,
+                    3,
+                    [
+                        "case",
+                        [
+                            "<=",
+                            [
+                                "get",
+                                "rank"
+                            ],
+                            3
+                        ],
+                        1,
+                        0
+                    ],
+                    8,
+                    [
+                        "case",
+                        [
+                            "==",
+                            [
+                                "get",
+                                "rank"
+                            ],
+                            0
+                        ],
+                        0,
+                        1
+                    ]
+                ],
                 "text-halo-color": "hsla(0,0%,100%,0.75)",
                 "text-halo-width": 0.8
             },
@@ -4710,14 +4644,14 @@
                             6,
                             [
                                 "Roboto Regular",
-                                "Open Sans Regular"
+                                "Noto Sans Regular"
                             ]
                         ],
                         [
                             12,
                             [
                                 "Roboto Medium",
-                                "Open Sans Semibold"
+                                "Noto Sans Regular"
                             ]
                         ]
                     ]
@@ -4786,18 +4720,7 @@
                         ]
                     ]
                 },
-                "text-field": [
-                    "concat",
-                    [
-                        "get",
-                        "name:latin"
-                    ],
-                    "\n",
-                    [
-                        "get",
-                        "name:nonlatin"
-                    ]
-                ],
+                "text-field": "{name:latin}",
                 "visibility": "visible",
                 "text-anchor": "bottom",
                 "text-offset": [
@@ -4888,7 +4811,7 @@
                 ],
                 "text-font": [
                     "Roboto Medium",
-                    "Open Sans Semibold"
+                    "Noto Sans Regular"
                 ],
                 "text-size": [
                     "interpolate",
@@ -4965,18 +4888,7 @@
                     13,
                     ""
                 ],
-                "text-field": [
-                    "concat",
-                    [
-                        "get",
-                        "name:latin"
-                    ],
-                    "\n",
-                    [
-                        "get",
-                        "name:nonlatin"
-                    ]
-                ],
+                "text-field": "{name:latin}",
                 "visibility": "visible",
                 "text-anchor": "bottom",
                 "text-offset": [
@@ -5013,7 +4925,7 @@
             "layout": {
                 "text-font": [
                     "Roboto Medium",
-                    "Open Sans Semibold"
+                    "Noto Sans Regular"
                 ],
                 "text-size": [
                     "interpolate",
@@ -5157,7 +5069,7 @@
             "layout": {
                 "text-font": [
                     "Roboto Medium",
-                    "Open Sans Semibold"
+                    "Noto Sans Regular"
                 ],
                 "text-size": {
                     "stops": [
@@ -5201,8 +5113,8 @@
     "bearing": 0,
     "pitch": 0,
     "center": [
-        15.823088916622964,
-        20.555215053547514
+        0,
+        0
     ],
-    "zoom": 0.6199380585973483
+    "zoom": 1
 }

@@ -5052,6 +5052,67 @@
             ]
         },
         {
+            "id": "road_raceway",
+            "type": "line",
+            "source": "openmaptiles",
+            "source-layer": "transportation",
+            "minzoom": 9,
+            "layout": {
+                "line-cap": "round",
+                "line-join": "round",
+                "visibility": "visible"
+            },
+            "paint": {
+                "line-color": "rgba(254, 190, 200, 1)",
+                "line-width": {
+                    "base": 1.2,
+                    "stops": [
+                        [
+                            11,
+                            0.7
+                        ],
+                        [
+                            12,
+                            1.9
+                        ],
+                        [
+                            13,
+                            3.9
+                        ],
+                        [
+                            14,
+                            5.1
+                        ],
+                        [
+                            15,
+                            5.1
+                        ],
+                        [
+                            16,
+                            11.5
+                        ],
+                        [
+                            17,
+                            11.5
+                        ],
+                        [
+                            18,
+                            12.7
+                        ]
+                    ]
+                }
+            },
+            "metadata": {},
+            "filter": [
+                "all",
+                [
+                    "in",
+                    "class",
+                    "raceway"
+                ]
+            ]
+        },
+        {
             "id": "road_minor",
             "type": "line",
             "source": "openmaptiles",
@@ -11222,7 +11283,15 @@
                 "text-color": "#6e441e",
                 "text-halo-color": "rgba(255, 255, 255, .8)",
                 "text-halo-width": 1
-            }
+            },
+            "filter": [
+                "all",
+                [
+                    "!=",
+                    "class",
+                    "cliff"
+                ]
+            ]
         },
         {
             "id": "place_village",
@@ -11802,8 +11871,8 @@
     "bearing": 0,
     "pitch": 0,
     "center": [
-        47.15992,
-        19.507315
+        2.8655946968546004,
+        22.80535462569901
     ],
-    "zoom": 12
+    "zoom": 0.7418741168636303
 }
