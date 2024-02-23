@@ -10,7 +10,7 @@
     "mapbox-gl-controls": "^2.3.5"
   },
   "devDependencies": {
-    "@types/mapbox__mapbox-gl-geocoder": "^4.7.3",
+    "@types/mapbox__mapbox-gl-geocoder": "^5.0.0",
     "@types/mapbox-gl": "^2.7.6",
     "@types/node": "^18.11.10",
     "parcel": "^2.7.0"
