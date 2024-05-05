@@ -29,7 +29,7 @@
   },
   "layers": [
     {
-      "id": "background",
+      "id": "Background",
       "type": "background",
       "layout": {
         "visibility": "visible"
@@ -50,11 +50,104 @@
       }
     },
     {
-      "id": "snow",
+      "id": "Meadow",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "globallandcover",
+      "maxzoom": 8,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "hsl(75,51%,85%)",
+        "fill-opacity": {
+          "stops": [
+            [
+              0,
+              1
+            ],
+            [
+              8,
+              0.1
+            ]
+          ]
+        },
+        "fill-antialias": true
+      },
+      "filter": [
+        "==",
+        "class",
+        "grass"
+      ]
+    },
+    {
+      "id": "Scrub",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "globallandcover",
+      "maxzoom": 8,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "hsl(97,51%,80%)",
+        "fill-opacity": {
+          "stops": [
+            [
+              0,
+              1
+            ],
+            [
+              8,
+              0.1
+            ]
+          ]
+        },
+        "fill-antialias": true
+      },
+      "filter": [
+        "==",
+        "class",
+        "scrub"
+      ]
+    },
+    {
+      "id": "Crop",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "globallandcover",
+      "maxzoom": 8,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "hsl(50,67%,86%)",
+        "fill-opacity": {
+          "stops": [
+            [
+              0,
+              1
+            ],
+            [
+              8,
+              0.1
+            ]
+          ]
+        },
+        "fill-antialias": true
+      },
+      "filter": [
+        "==",
+        "class",
+        "crop"
+      ]
+    },
+    {
+      "id": "Glacier",
       "type": "fill",
       "source": "openmaptiles",
       "source-layer": "landcover",
-      "maxzoom": 24.0,
+      "maxzoom": 24,
       "layout": {
         "visibility": "visible"
       },
@@ -75,36 +168,45 @@
         "fill-antialias": true
       },
       "filter": [
-        "all",
-        [
-          "==",
-          "class",
-          "ice"
-        ]
+        "==",
+        "class",
+        "ice"
       ]
     },
     {
-      "id": "aeroway_fill",
+      "id": "Forest",
       "type": "fill",
       "source": "openmaptiles",
-      "source-layer": "aeroway",
-      "minzoom": 11.0,
+      "source-layer": "globallandcover",
+      "maxzoom": 8,
       "layout": {
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "hsl(0,0%,93%)",
-        "fill-opacity": 1
+        "fill-color": "hsl(119,38%,76%)",
+        "fill-opacity": {
+          "stops": [
+            [
+              1,
+              0.8
+            ],
+            [
+              8,
+              0
+            ]
+          ]
+        },
+        "fill-antialias": true
       },
-      "metadata": {},
       "filter": [
-        "==",
-        "$type",
-        "Polygon"
+        "in",
+        "class",
+        "forest",
+        "tree"
       ]
     },
     {
-      "id": "landcover",
+      "id": "Sand",
       "type": "fill",
       "source": "openmaptiles",
       "source-layer": "landcover",
@@ -112,74 +214,42 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": [
-          "match",
-          [
-            "get",
-            "class"
-          ],
-          "wood",
-          "hsl(99,48%,77%)",
-          "grass",
-          "hsl(103,40%,85%)",
-          "sand",
-          "hsl(52,93%,89%)",
-          "hsl(0,0%,100%)"
-        ],
-        "fill-opacity": 0.5,
-        "fill-antialias": true
+        "fill-color": "hsl(52,93%,89%)",
+        "fill-opacity": 0.85,
+        "fill-antialias": false
       },
       "metadata": {},
       "filter": [
-        "all",
-        [
-          "in",
-          "class",
-          "grass",
-          "sand",
-          "wood"
-        ]
+        "==",
+        "class",
+        "sand"
       ]
     },
     {
-      "id": "landuse_industrial",
+      "id": "Wood",
       "type": "fill",
       "source": "openmaptiles",
-      "source-layer": "landuse",
-      "maxzoom": 24.0,
+      "source-layer": "landcover",
       "layout": {
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": {
-          "stops": [
-            [
-              9,
-              "hsl(40,67%,90%)"
-            ],
-            [
-              16,
-              "hsl(49,54%,90%)"
-            ]
-          ]
-        }
+        "fill-color": "hsl(87,46%,85%)",
+        "fill-opacity": 1
       },
       "metadata": {},
       "filter": [
-        "all",
-        [
-          "in",
-          "class",
-          "industrial"
-        ]
+        "==",
+        "class",
+        "wood"
       ]
     },
     {
-      "id": "landuse_residential",
+      "id": "Residential",
       "type": "fill",
       "source": "openmaptiles",
       "source-layer": "landuse",
-      "maxzoom": 24.0,
+      "maxzoom": 24,
       "layout": {
         "visibility": "visible"
       },
@@ -200,18 +270,133 @@
       },
       "metadata": {},
       "filter": [
-        "all",
-        [
-          "in",
-          "class",
-          "residential",
-          "suburbs",
-          "neighbourhood"
-        ]
+        "in",
+        "class",
+        "residential",
+        "suburbs",
+        "neighbourhood"
       ]
     },
     {
-      "id": "road_area_pedestrian",
+      "id": "Industrial",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "landuse",
+      "maxzoom": 24,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          9,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "industrial"
+            ],
+            "hsl(40,67%,90%)",
+            "quarry",
+            "hsla(32, 47%, 87%, 0.2)",
+            "hsl(60, 31%, 87%)"
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "industrial"
+            ],
+            "hsl(49,54%,90%)",
+            "quarry",
+            "hsla(32, 47%, 87%, 0.5)",
+            "hsl(60, 31%, 87%)"
+          ]
+        ],
+        "fill-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          1,
+          9,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            "quarry",
+            0,
+            1
+          ],
+          10,
+          1
+        ]
+      },
+      "metadata": {},
+      "filter": [
+        "in",
+        "class",
+        "industrial",
+        "quarry"
+      ]
+    },
+    {
+      "id": "Grass",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "landcover",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "hsl(103, 40%, 85%)",
+        "fill-opacity": 0.5,
+        "fill-antialias": false
+      },
+      "metadata": {},
+      "filter": [
+        "==",
+        "class",
+        "grass"
+      ]
+    },
+    {
+      "id": "Airport zone",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "aeroway",
+      "minzoom": 11,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "hsl(0,0%,93%)",
+        "fill-opacity": 1
+      },
+      "metadata": {},
+      "filter": [
+        "==",
+        "$type",
+        "Polygon"
+      ]
+    },
+    {
+      "id": "Pedestrian",
       "type": "fill",
       "source": "openmaptiles",
       "source-layer": "transportation",
@@ -249,43 +434,16 @@
       ]
     },
     {
-      "id": "landuse",
+      "id": "Cemetery",
       "type": "fill",
       "source": "openmaptiles",
       "source-layer": "landuse",
-      "minzoom": 9.0,
-      "maxzoom": 24.0,
+      "minzoom": 9,
       "layout": {
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": [
-          "match",
-          [
-            "get",
-            "class"
-          ],
-          [
-            "school",
-            "college",
-            "university"
-          ],
-          "hsl(194,52%,94%)",
-          [
-            "stadium",
-            "pitch"
-          ],
-          "hsl(94,100%,88%)",
-          "hospital",
-          "hsl(12,63%,94%)",
-          "cemetery",
-          "hsl(0,0%,88%)",
-          "garages",
-          "hsl(0,0%,93%)",
-          "dam",
-          "hsl(68,20%,79%)",
-          "hsl(0,0%,100%)"
-        ],
+        "fill-color": "hsl(0,0%,88%)",
         "fill-opacity": {
           "stops": [
             [
@@ -302,28 +460,117 @@
       },
       "metadata": {},
       "filter": [
-        "all",
-        [
-          "in",
-          "class",
-          "cemetery",
-          "college",
-          "dam",
-          "hospital",
-          "garages",
-          "pitch",
-          "school",
-          "stadium",
-          "university"
-        ]
+        "==",
+        "class",
+        "cemetery"
       ]
     },
     {
-      "id": "waterway_tunnel",
+      "id": "Hospital",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "landuse",
+      "minzoom": 9,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "hsl(12,63%,94%)",
+        "fill-opacity": {
+          "stops": [
+            [
+              9,
+              0.25
+            ],
+            [
+              16,
+              1
+            ]
+          ]
+        },
+        "fill-antialias": true
+      },
+      "metadata": {},
+      "filter": [
+        "==",
+        "class",
+        "hospital"
+      ]
+    },
+    {
+      "id": "Stadium",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "landuse",
+      "minzoom": 9,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "hsl(94, 100%, 88%)",
+        "fill-opacity": {
+          "stops": [
+            [
+              9,
+              0.25
+            ],
+            [
+              16,
+              1
+            ]
+          ]
+        },
+        "fill-antialias": true
+      },
+      "metadata": {},
+      "filter": [
+        "in",
+        "class",
+        "pitch",
+        "stadium",
+        "playground"
+      ]
+    },
+    {
+      "id": "School",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "landuse",
+      "minzoom": 9,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "hsl(194,52%,94%)",
+        "fill-opacity": {
+          "stops": [
+            [
+              9,
+              0.25
+            ],
+            [
+              16,
+              1
+            ]
+          ]
+        },
+        "fill-antialias": true
+      },
+      "metadata": {},
+      "filter": [
+        "in",
+        "class",
+        "college",
+        "school",
+        "university"
+      ]
+    },
+    {
+      "id": "River tunnel",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "waterway",
-      "minzoom": 14.0,
+      "minzoom": 14,
       "layout": {
         "line-cap": "round",
         "visibility": "visible"
@@ -350,16 +597,13 @@
         ]
       },
       "filter": [
-        "all",
-        [
-          "==",
-          "brunnel",
-          "tunnel"
-        ]
+        "==",
+        "brunnel",
+        "tunnel"
       ]
     },
     {
-      "id": "waterway_river",
+      "id": "River",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "waterway",
@@ -384,16 +628,13 @@
       },
       "metadata": {},
       "filter": [
-        "all",
-        [
-          "!=",
-          "brunnel",
-          "tunnel"
-        ]
+        "!=",
+        "brunnel",
+        "tunnel"
       ]
     },
     {
-      "id": "water",
+      "id": "Water intermittent",
       "type": "fill",
       "source": "openmaptiles",
       "source-layer": "water",
@@ -401,16 +642,27 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": [
-          "match",
-          [
-            "get",
-            "intermittent"
-          ],
-          1,
-          "hsl(205,91%,83%)",
-          "hsl(204,92%,75%)"
-        ],
+        "fill-color": "hsl(205,91%,83%)",
+        "fill-opacity": 0.85,
+        "fill-antialias": true
+      },
+      "metadata": {},
+      "filter": [
+        "==",
+        "intermittent",
+        1
+      ]
+    },
+    {
+      "id": "Water",
+      "type": "fill",
+      "source": "openmaptiles",
+      "source-layer": "water",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "hsl(204,92%,75%)",
         "fill-opacity": [
           "match",
           [
@@ -425,15 +677,17 @@
       },
       "metadata": {},
       "filter": [
-        "all"
+        "!=",
+        "intermittent",
+        1
       ]
     },
     {
-      "id": "aeroway",
+      "id": "Aeroway",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "aeroway",
-      "minzoom": 11.0,
+      "minzoom": 11,
       "layout": {
         "visibility": "visible"
       },
@@ -476,45 +730,14 @@
           ]
         ]
       },
-      "metadata": {},
-      "filter": [
-        "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ]
-      ]
+      "metadata": {}
     },
     {
-      "id": "aeroway_runway",
+      "id": "Heliport",
       "type": "fill",
       "source": "openmaptiles",
       "source-layer": "aeroway",
-      "minzoom": 11.0,
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "fill-color": "hsl(0,0%,97%)",
-        "fill-opacity": 1
-      },
-      "metadata": {},
-      "filter": [
-        "all",
-        [
-          "in",
-          "class",
-          "runway"
-        ]
-      ]
-    },
-    {
-      "id": "aeroway_helipad",
-      "type": "fill",
-      "source": "openmaptiles",
-      "source-layer": "aeroway",
-      "minzoom": 11.0,
+      "minzoom": 11,
       "layout": {
         "visibility": "visible"
       },
@@ -524,19 +747,18 @@
       },
       "metadata": {},
       "filter": [
-        "all",
-        [
-          "in",
-          "class",
-          "helipad"
-        ]
+        "in",
+        "class",
+        "helipad",
+        "heliport"
       ]
     },
     {
-      "id": "ferry_line",
+      "id": "Ferry line",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
+      "minzoom": 6,
       "layout": {
         "line-join": "round",
         "visibility": "visible"
@@ -554,27 +776,50 @@
             ]
           ]
         },
-        "line-width": 1.1,
+        "line-width": {
+          "stops": [
+            [
+              10,
+              0.5
+            ],
+            [
+              14,
+              1.1
+            ]
+          ]
+        },
+        "line-opacity": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          6,
+          0.5,
+          7,
+          0.8,
+          8,
+          1
+        ],
         "line-dasharray": [
           2,
           2
         ]
       },
       "filter": [
-        "all",
-        [
-          "in",
-          "class",
-          "ferry"
-        ]
+        "==",
+        "class",
+        "ferry"
       ]
     },
     {
-      "id": "tunnel-casing",
+      "id": "Tunnel outline",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
-      "minzoom": 4.0,
+      "minzoom": 4,
       "layout": {
         "line-cap": "butt",
         "line-join": "round",
@@ -812,11 +1057,11 @@
       ]
     },
     {
-      "id": "tunnel",
+      "id": "Tunnel",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
-      "minzoom": 4.0,
+      "minzoom": 4,
       "layout": {
         "line-cap": "butt",
         "line-join": "round",
@@ -1081,7 +1326,7 @@
       ]
     },
     {
-      "id": "tunnel_rail",
+      "id": "Railway tunnel",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
@@ -1118,14 +1363,14 @@
           "tunnel"
         ],
         [
-          "in",
+          "==",
           "class",
           "rail"
         ]
       ]
     },
     {
-      "id": "tunnel_rail-hatching",
+      "id": "Railway tunnel hatching",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
@@ -1173,11 +1418,11 @@
       ]
     },
     {
-      "id": "tunnel_footway-casing",
+      "id": "Footway tunnel outline",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
-      "minzoom": 12.0,
+      "minzoom": 12,
       "layout": {
         "line-cap": "round",
         "line-join": "miter",
@@ -1230,11 +1475,11 @@
       ]
     },
     {
-      "id": "tunnel_footway",
+      "id": "Footway tunnel",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
-      "minzoom": 12.0,
+      "minzoom": 12,
       "layout": {
         "line-cap": "butt",
         "line-join": "round",
@@ -1305,7 +1550,7 @@
       ]
     },
     {
-      "id": "road_area_pier",
+      "id": "Pier",
       "type": "fill",
       "source": "openmaptiles",
       "source-layer": "transportation",
@@ -1332,7 +1577,7 @@
       ]
     },
     {
-      "id": "road_pier",
+      "id": "Pier road",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
@@ -1366,70 +1611,14 @@
           "LineString"
         ],
         [
-          "in",
+          "==",
           "class",
           "pier"
         ]
       ]
     },
     {
-      "id": "bicycle_local_casing",
-      "type": "line",
-      "source": "openmaptiles",
-      "source-layer": "landuse",
-      "minzoom": 1.0,
-      "layout": {
-        "line-cap": "round",
-        "line-join": "miter",
-        "visibility": "visible",
-        "line-miter-limit": 3
-      },
-      "paint": {
-        "line-color": "hsl(109, 100%, 41%)",
-        "line-width": {
-          "base": 1,
-          "stops": [
-            [
-              12,
-              2.6
-            ],
-            [
-              14,
-              4
-            ]
-          ]
-        },
-        "line-offset": {
-          "stops": [
-            [
-              13,
-              0
-            ],
-            [
-              14,
-              -5
-            ]
-          ]
-        },
-        "line-opacity": 1
-      },
-      "filter": [
-        "all",
-        [
-          "==",
-          "class",
-          "bicycle"
-        ],
-        [
-          "in",
-          "network",
-          "rcn",
-          "lcn"
-        ]
-      ]
-    },
-    {
-      "id": "road_area_bridge",
+      "id": "Bridge",
       "type": "fill",
       "source": "openmaptiles",
       "source-layer": "transportation",
@@ -1443,46 +1632,292 @@
       },
       "metadata": {},
       "filter": [
-        "all",
-        [
-          "==",
-          "$type",
-          "Polygon"
-        ],
-        [
-          "==",
-          "brunnel",
-          "bridge"
-        ]
+        "==",
+        "brunnel",
+        "bridge"
       ]
     },
     {
-      "id": "road_network-casing",
+      "id": "Minor road outline",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
-      "minzoom": 4.0,
+      "minzoom": 4,
       "layout": {
         "line-cap": "butt",
         "line-join": "round",
         "visibility": "visible"
       },
       "paint": {
-        "line-color": [
-          "match",
+        "line-color": "hsl(36,5%,80%)",
+        "line-width": [
+          "interpolate",
           [
-            "get",
-            "class"
+            "linear",
+            2
           ],
-          "motorway",
-          "hsl(28,72%,69%)",
           [
-            "trunk",
-            "primary"
+            "zoom"
           ],
-          "hsl(28,72%,69%)",
-          "hsl(36,5%,80%)"
+          6,
+          0,
+          7,
+          0.5,
+          12,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "secondary",
+              "tertiary"
+            ],
+            2,
+            [
+              "minor",
+              "service",
+              "track"
+            ],
+            1,
+            0.5
+          ],
+          14,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "secondary"
+            ],
+            6,
+            [
+              "tertiary"
+            ],
+            4,
+            [
+              "minor",
+              "service",
+              "track"
+            ],
+            3,
+            3
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "secondary"
+            ],
+            8,
+            [
+              "tertiary"
+            ],
+            8,
+            [
+              "minor",
+              "service",
+              "track"
+            ],
+            4,
+            4
+          ],
+          20,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "secondary"
+            ],
+            26,
+            [
+              "tertiary"
+            ],
+            26,
+            [
+              "minor",
+              "service",
+              "track"
+            ],
+            18,
+            18
+          ]
         ],
+        "line-opacity": 1
+      },
+      "metadata": {},
+      "filter": [
+        "all",
+        [
+          "!=",
+          "brunnel",
+          "tunnel"
+        ],
+        [
+          "!in",
+          "class",
+          "aerialway",
+          "bridge",
+          "ferry",
+          "minor_construction",
+          "motorway",
+          "motorway_construction",
+          "path",
+          "path_construction",
+          "pier",
+          "primary",
+          "primary_construction",
+          "rail",
+          "secondary_construction",
+          "service_construction",
+          "tertiary_construction",
+          "track_construction",
+          "transit",
+          "trunk_construction"
+        ]
+      ]
+    },
+    {
+      "id": "Major road outline",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 4,
+      "layout": {
+        "line-cap": "butt",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsl(28,72%,69%)",
+        "line-width": [
+          "interpolate",
+          [
+            "linear",
+            2
+          ],
+          [
+            "zoom"
+          ],
+          6,
+          0,
+          7,
+          0.5,
+          10,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "trunk",
+              "primary"
+            ],
+            2.4,
+            0
+          ],
+          12,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "trunk",
+              "primary"
+            ],
+            3,
+            0.5
+          ],
+          14,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "trunk"
+            ],
+            4,
+            [
+              "primary"
+            ],
+            6,
+            3
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "trunk",
+              "primary"
+            ],
+            10,
+            4
+          ],
+          20,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "trunk",
+              "primary"
+            ],
+            26,
+            18
+          ]
+        ],
+        "line-opacity": 1
+      },
+      "metadata": {},
+      "filter": [
+        "all",
+        [
+          "!=",
+          "brunnel",
+          "tunnel"
+        ],
+        [
+          "in",
+          "class",
+          "primary",
+          "trunk"
+        ]
+      ]
+    },
+    {
+      "id": "Highway outline",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 4,
+      "layout": {
+        "line-cap": "butt",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsl(28,72%,69%)",
         "line-width": [
           "interpolate",
           [
@@ -1516,11 +1951,6 @@
               0,
               2.5
             ],
-            [
-              "trunk",
-              "primary"
-            ],
-            2.4,
             0
           ],
           12,
@@ -1543,22 +1973,6 @@
               2,
               6
             ],
-            [
-              "trunk",
-              "primary"
-            ],
-            3,
-            [
-              "secondary",
-              "tertiary"
-            ],
-            2,
-            [
-              "minor",
-              "service",
-              "track"
-            ],
-            1,
             0.5
           ],
           14,
@@ -1581,28 +1995,6 @@
               5,
               8
             ],
-            [
-              "trunk"
-            ],
-            4,
-            [
-              "primary"
-            ],
-            6,
-            [
-              "secondary"
-            ],
-            6,
-            [
-              "tertiary"
-            ],
-            4,
-            [
-              "minor",
-              "service",
-              "track"
-            ],
-            3,
             3
           ],
           16,
@@ -1613,25 +2005,9 @@
               "class"
             ],
             [
-              "motorway",
-              "trunk",
-              "primary"
+              "motorway"
             ],
             10,
-            [
-              "secondary"
-            ],
-            8,
-            [
-              "tertiary"
-            ],
-            8,
-            [
-              "minor",
-              "service",
-              "track"
-            ],
-            4,
             4
           ],
           20,
@@ -1642,25 +2018,9 @@
               "class"
             ],
             [
-              "motorway",
-              "trunk",
-              "primary"
+              "motorway"
             ],
             26,
-            [
-              "secondary"
-            ],
-            26,
-            [
-              "tertiary"
-            ],
-            26,
-            [
-              "minor",
-              "service",
-              "track"
-            ],
-            18,
             18
           ]
         ],
@@ -1670,37 +2030,23 @@
       "filter": [
         "all",
         [
-          "!in",
+          "!=",
           "brunnel",
           "tunnel"
         ],
         [
-          "!in",
+          "==",
           "class",
-          "bridge",
-          "ferry",
-          "rail",
-          "transit",
-          "pier",
-          "path",
-          "aerialway",
-          "motorway_construction",
-          "trunk_construction",
-          "primary_construction",
-          "secondary_construction",
-          "tertiary_construction",
-          "minor_construction",
-          "service_construction",
-          "track_construction"
+          "motorway"
         ]
       ]
     },
     {
-      "id": "road_network_construction",
+      "id": "Road under construction",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
-      "minzoom": 4.0,
+      "minzoom": 4,
       "layout": {
         "line-cap": "square",
         "line-join": "round",
@@ -1732,8 +2078,6 @@
             "zoom"
           ],
           5,
-          0,
-          6,
           [
             "match",
             [
@@ -1753,7 +2097,7 @@
                 "bridge"
               ],
               0,
-              1
+              0.5
             ],
             [
               "trunk_construction",
@@ -1936,7 +2280,7 @@
         "line-opacity": [
           "case",
           [
-            "<=",
+            "==",
             [
               "get",
               "brunnel"
@@ -1953,48 +2297,293 @@
       },
       "metadata": {},
       "filter": [
-        "all",
-        [
-          "in",
-          "class",
-          "motorway_construction",
-          "trunk_construction",
-          "primary_construction",
-          "secondary_construction",
-          "tertiary_construction",
-          "minor_construction",
-          "service_construction",
-          "track_construction"
-        ]
+        "in",
+        "class",
+        "motorway_construction",
+        "trunk_construction",
+        "primary_construction",
+        "secondary_construction",
+        "tertiary_construction",
+        "minor_construction",
+        "service_construction",
+        "track_construction"
       ]
     },
     {
-      "id": "road_network",
+      "id": "Minor road",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
-      "minzoom": 4.0,
+      "minzoom": 4,
       "layout": {
         "line-cap": "butt",
         "line-join": "round",
         "visibility": "visible"
       },
       "paint": {
-        "line-color": [
-          "match",
+        "line-color": "hsl(0,0%,100%)",
+        "line-width": [
+          "interpolate",
           [
-            "get",
-            "class"
+            "linear",
+            2
           ],
-          "motorway",
-          "hsl(35,100%,76%)",
           [
-            "trunk",
-            "primary"
+            "zoom"
           ],
-          "hsl(48,100%,83%)",
-          "hsl(0,0%,100%)"
+          5,
+          0.5,
+          10,
+          1,
+          12,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "secondary",
+              "tertiary"
+            ],
+            1.5,
+            [
+              "minor",
+              "service",
+              "track"
+            ],
+            1,
+            1
+          ],
+          14,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "secondary"
+            ],
+            4,
+            [
+              "tertiary"
+            ],
+            3,
+            [
+              "minor",
+              "service",
+              "track"
+            ],
+            2,
+            2
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "secondary"
+            ],
+            7,
+            [
+              "tertiary"
+            ],
+            6,
+            [
+              "minor",
+              "service",
+              "track"
+            ],
+            4,
+            4
+          ],
+          20,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "secondary"
+            ],
+            24,
+            [
+              "tertiary"
+            ],
+            24,
+            [
+              "minor",
+              "service",
+              "track"
+            ],
+            16,
+            16
+          ]
+        ]
+      },
+      "metadata": {},
+      "filter": [
+        "all",
+        [
+          "!=",
+          "brunnel",
+          "tunnel"
         ],
+        [
+          "!in",
+          "class",
+          "aerialway",
+          "bridge",
+          "ferry",
+          "minor_construction",
+          "motorway",
+          "motorway_construction",
+          "path",
+          "path_construction",
+          "pier",
+          "primary",
+          "primary_construction",
+          "rail",
+          "secondary_construction",
+          "service_construction",
+          "tertiary_construction",
+          "track_construction",
+          "transit",
+          "trunk_construction"
+        ]
+      ]
+    },
+    {
+      "id": "Major road",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 4,
+      "layout": {
+        "line-cap": "butt",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsl(48,100%,83%)",
+        "line-width": [
+          "interpolate",
+          [
+            "linear",
+            2
+          ],
+          [
+            "zoom"
+          ],
+          10,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "trunk",
+              "primary"
+            ],
+            1.5,
+            1
+          ],
+          12,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "trunk",
+              "primary"
+            ],
+            2.5,
+            1
+          ],
+          14,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "trunk"
+            ],
+            3,
+            [
+              "primary"
+            ],
+            5,
+            2
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "trunk",
+              "primary"
+            ],
+            8,
+            4
+          ],
+          20,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "trunk",
+              "primary"
+            ],
+            24,
+            16
+          ]
+        ]
+      },
+      "metadata": {},
+      "filter": [
+        "all",
+        [
+          "!=",
+          "brunnel",
+          "tunnel"
+        ],
+        [
+          "in",
+          "class",
+          "primary",
+          "trunk"
+        ]
+      ]
+    },
+    {
+      "id": "Highway",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "minzoom": 4,
+      "layout": {
+        "line-cap": "butt",
+        "line-join": "round",
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "hsl(35,100%,76%)",
         "line-width": [
           "interpolate",
           [
@@ -2028,11 +2617,6 @@
               0,
               1
             ],
-            [
-              "trunk",
-              "primary"
-            ],
-            0,
             0
           ],
           10,
@@ -2055,11 +2639,6 @@
               0,
               2.5
             ],
-            [
-              "trunk",
-              "primary"
-            ],
-            1.5,
             1
           ],
           12,
@@ -2082,25 +2661,6 @@
               1,
               4
             ],
-            [
-              "trunk"
-            ],
-            2.5,
-            [
-              "primary"
-            ],
-            2.5,
-            [
-              "secondary",
-              "tertiary"
-            ],
-            1.5,
-            [
-              "minor",
-              "service",
-              "track"
-            ],
-            1,
             1
           ],
           14,
@@ -2123,28 +2683,6 @@
               5,
               6
             ],
-            [
-              "trunk"
-            ],
-            3,
-            [
-              "primary"
-            ],
-            5,
-            [
-              "secondary"
-            ],
-            4,
-            [
-              "tertiary"
-            ],
-            3,
-            [
-              "minor",
-              "service",
-              "track"
-            ],
-            2,
             2
           ],
           16,
@@ -2155,25 +2693,9 @@
               "class"
             ],
             [
-              "motorway",
-              "trunk",
-              "primary"
+              "motorway"
             ],
             8,
-            [
-              "secondary"
-            ],
-            7,
-            [
-              "tertiary"
-            ],
-            6,
-            [
-              "minor",
-              "service",
-              "track"
-            ],
-            4,
             4
           ],
           20,
@@ -2184,25 +2706,9 @@
               "class"
             ],
             [
-              "motorway",
-              "trunk",
-              "primary"
+              "motorway"
             ],
             24,
-            [
-              "secondary"
-            ],
-            24,
-            [
-              "tertiary"
-            ],
-            24,
-            [
-              "minor",
-              "service",
-              "track"
-            ],
-            16,
             16
           ]
         ]
@@ -2216,32 +2722,18 @@
           "tunnel"
         ],
         [
-          "!in",
+          "==",
           "class",
-          "ferry",
-          "rail",
-          "transit",
-          "pier",
-          "bridge",
-          "path",
-          "aerialway",
-          "motorway_construction",
-          "trunk_construction",
-          "primary_construction",
-          "secondary_construction",
-          "tertiary_construction",
-          "minor_construction",
-          "service_construction",
-          "track_construction"
+          "motorway"
         ]
       ]
     },
     {
-      "id": "road_path_pedestrian-casing",
+      "id": "Path outline",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
-      "minzoom": 12.0,
+      "minzoom": 12,
       "layout": {
         "line-cap": "round",
         "line-join": "miter",
@@ -2293,11 +2785,11 @@
       ]
     },
     {
-      "id": "road_path_pedestrian",
+      "id": "Path",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
-      "minzoom": 12.0,
+      "minzoom": 12,
       "layout": {
         "line-cap": "butt",
         "line-join": "round",
@@ -2363,6 +2855,70 @@
           "!=",
           "brunnel",
           "tunnel"
+        ]
+      ]
+    },
+    {
+      "id": "Major rail",
+      "type": "line",
+      "source": "openmaptiles",
+      "source-layer": "transportation",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": {
+          "stops": [
+            [
+              8,
+              "hsl(0,0%,72%)"
+            ],
+            [
+              16,
+              "hsl(0,0%,70%)"
+            ]
+          ]
+        },
+        "line-width": {
+          "base": 1.4,
+          "stops": [
+            [
+              14,
+              0.4
+            ],
+            [
+              15,
+              0.75
+            ],
+            [
+              20,
+              2
+            ]
+          ]
+        },
+        "line-opacity": [
+          "match",
+          [
+            "get",
+            "service"
+          ],
+          "yard",
+          0.5,
+          1
+        ]
+      },
+      "metadata": {},
+      "filter": [
+        "all",
+        [
+          "!in",
+          "brunnel",
+          "tunnel"
+        ],
+        [
+          "==",
+          "class",
+          "rail"
         ]
       ]
     },
@@ -2476,71 +3032,7 @@
       }
     },
     {
-      "id": "rail_major",
-      "type": "line",
-      "source": "openmaptiles",
-      "source-layer": "transportation",
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "line-color": {
-          "stops": [
-            [
-              8,
-              "hsl(0,0%,72%)"
-            ],
-            [
-              16,
-              "hsl(0,0%,70%)"
-            ]
-          ]
-        },
-        "line-width": {
-          "base": 1.4,
-          "stops": [
-            [
-              14,
-              0.4
-            ],
-            [
-              15,
-              0.75
-            ],
-            [
-              20,
-              2
-            ]
-          ]
-        },
-        "line-opacity": [
-          "match",
-          [
-            "get",
-            "service"
-          ],
-          "yard",
-          0.5,
-          1
-        ]
-      },
-      "metadata": {},
-      "filter": [
-        "all",
-        [
-          "!in",
-          "brunnel",
-          "tunnel"
-        ],
-        [
-          "==",
-          "class",
-          "rail"
-        ]
-      ]
-    },
-    {
-      "id": "rail_major-hatching",
+      "id": "Major rail hatching",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
@@ -2597,7 +3089,7 @@
       ]
     },
     {
-      "id": "rail_minor",
+      "id": "Minor rail",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
@@ -2626,17 +3118,14 @@
       },
       "metadata": {},
       "filter": [
-        "all",
-        [
-          "in",
-          "subclass",
-          "tram",
-          "light_rail"
-        ]
+        "in",
+        "subclass",
+        "light_rail",
+        "tram"
       ]
     },
     {
-      "id": "rail_minor-hatching",
+      "id": "Minor rail hatching",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
@@ -2669,22 +3158,19 @@
       },
       "metadata": {},
       "filter": [
-        "all",
-        [
-          "in",
-          "subclass",
-          "tram",
-          "light_rail"
-        ]
+        "in",
+        "subclass",
+        "tram",
+        "light_rail"
       ]
     },
     {
-      "id": "building",
+      "id": "Building",
       "type": "fill",
       "source": "openmaptiles",
       "source-layer": "building",
-      "minzoom": 13.0,
-      "maxzoom": 15.0,
+      "minzoom": 13,
+      "maxzoom": 15,
       "layout": {
         "visibility": "visible"
       },
@@ -2708,11 +3194,11 @@
       "metadata": {}
     },
     {
-      "id": "building-3d",
+      "id": "Building 3D",
       "type": "fill-extrusion",
       "source": "openmaptiles",
       "source-layer": "building",
-      "minzoom": 15.0,
+      "minzoom": 15,
       "layout": {
         "visibility": "visible"
       },
@@ -2730,15 +3216,12 @@
       },
       "metadata": {},
       "filter": [
-        "all",
-        [
-          "!has",
-          "hide_3d"
-        ]
+        "!has",
+        "hide_3d"
       ]
     },
     {
-      "id": "aqueduct-casing",
+      "id": "Aqueduct outline",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "waterway",
@@ -2764,21 +3247,13 @@
         }
       },
       "filter": [
-        "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "==",
-          "brunnel",
-          "bridge"
-        ]
+        "==",
+        "brunnel",
+        "bridge"
       ]
     },
     {
-      "id": "aqueduct",
+      "id": "Aqueduct",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "waterway",
@@ -2818,11 +3293,11 @@
       ]
     },
     {
-      "id": "cablecar",
+      "id": "Cablecar",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
-      "minzoom": 13.0,
+      "minzoom": 13,
       "layout": {
         "line-cap": "round",
         "visibility": "visible"
@@ -2851,11 +3326,11 @@
       ]
     },
     {
-      "id": "cablecar-dash",
+      "id": "Cablecar dash",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "transportation",
-      "minzoom": 13.0,
+      "minzoom": 13,
       "layout": {
         "line-cap": "round",
         "line-join": "bevel",
@@ -2888,46 +3363,58 @@
       ]
     },
     {
-      "id": "border_other",
+      "id": "Other border",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "boundary",
-      "minzoom": 3.0,
-      "maxzoom": 13.0,
+      "minzoom": 3,
       "layout": {
         "visibility": "visible"
       },
       "paint": {
-        "line-color": [
-          "match",
+        "line-color": "hsl(0, 0%, 70%)",
+        "line-width": [
+          "interpolate",
           [
-            "get",
-            "maritime"
+            "linear",
+            1
           ],
-          1,
-          "hsla(210,52%,64%,0)",
-          "hsla(0,0%,60%,0.5)"
-        ],
-        "line-width": {
-          "stops": [
+          [
+            "zoom"
+          ],
+          3,
+          0.75,
+          4,
+          0.8,
+          11,
+          [
+            "case",
             [
-              3,
-              0.75
+              "<=",
+              [
+                "get",
+                "admin_level"
+              ],
+              6
             ],
+            1.75,
+            1.5
+          ],
+          18,
+          [
+            "case",
             [
-              4,
-              1.25
+              "<=",
+              [
+                "get",
+                "admin_level"
+              ],
+              6
             ],
-            [
-              11,
-              1.75
-            ],
-            [
-              18,
-              3
-            ]
+            3,
+            2
           ]
-        },
+        ],
         "line-dasharray": [
           2,
           1
@@ -2936,44 +3423,37 @@
       "filter": [
         "all",
         [
-          ">=",
+          "in",
           "admin_level",
-          3
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
         ],
         [
           "==",
           "maritime",
           0
-        ],
-        [
-          "<",
-          "admin_level",
-          10
         ]
       ]
     },
     {
-      "id": "border_disputed",
+      "id": "Disputed border",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "boundary",
-      "minzoom": 0.0,
+      "minzoom": 0,
       "layout": {
         "line-cap": "round",
         "line-join": "round",
         "visibility": "visible"
       },
       "paint": {
-        "line-color": [
-          "match",
-          [
-            "get",
-            "maritime"
-          ],
-          1,
-          "hsla(210,52%,64%,0)",
-          "hsl(0,0%,63%)"
-        ],
+        "line-color": "hsl(0, 0%, 63%)",
         "line-width": {
           "stops": [
             [
@@ -2987,6 +3467,10 @@
             [
               10,
               2
+            ],
+            [
+              24,
+              12
             ]
           ]
         },
@@ -2998,45 +3482,35 @@
       "filter": [
         "all",
         [
-          "<=",
+          "==",
           "admin_level",
           2
         ],
         [
           "==",
-          "$type",
-          "LineString"
+          "disputed",
+          1
         ],
         [
           "==",
-          "disputed",
-          1
+          "maritime",
+          0
         ]
       ]
     },
     {
-      "id": "border_country",
+      "id": "Country border",
       "type": "line",
       "source": "openmaptiles",
       "source-layer": "boundary",
-      "minzoom": 0.0,
+      "minzoom": 0,
       "layout": {
         "line-cap": "round",
         "line-join": "round",
         "visibility": "visible"
       },
       "paint": {
-        "line-blur": 0,
-        "line-color": [
-          "match",
-          [
-            "get",
-            "maritime"
-          ],
-          1,
-          "hsla(210,52%,64%,0)",
-          "hsl(0,0%,54%)"
-        ],
+        "line-color": "hsl(0, 0%, 54%)",
         "line-width": {
           "stops": [
             [
@@ -3050,6 +3524,10 @@
             [
               10,
               2
+            ],
+            [
+              24,
+              12
             ]
           ]
         }
@@ -3057,32 +3535,32 @@
       "filter": [
         "all",
         [
-          "<=",
+          "==",
           "admin_level",
           2
         ],
         [
           "==",
-          "$type",
-          "LineString"
+          "disputed",
+          0
         ],
         [
           "==",
-          "disputed",
+          "maritime",
           0
         ]
       ]
     },
     {
-      "id": "water_line",
+      "id": "River labels",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "waterway",
-      "minzoom": 13.0,
+      "minzoom": 13,
       "layout": {
         "text-font": [
           "Roboto Italic",
-          "Open Sans Italic"
+          "Noto Sans Italic"
         ],
         "text-size": {
           "stops": [
@@ -3101,22 +3579,17 @@
           ]
         },
         "text-field": [
-          "concat",
+          "coalesce",
           [
             "get",
-            "name:latin"
+            "name:en"
           ],
-          " ",
           [
             "get",
-            "name:nonlatin"
+            "name"
           ]
         ],
         "visibility": "visible",
-        "text-offset": [
-          0,
-          0
-        ],
         "symbol-spacing": 400,
         "text-max-width": 5,
         "symbol-placement": "line",
@@ -3141,28 +3614,21 @@
         }
       },
       "filter": [
-        "all",
-        [
-          "==",
-          "$type",
-          "LineString"
-        ],
-        [
-          "has",
-          "name"
-        ]
+        "==",
+        "$type",
+        "LineString"
       ]
     },
     {
-      "id": "water_point",
+      "id": "Ocean labels",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "water_name",
-      "minzoom": 0.0,
+      "minzoom": 0,
       "layout": {
         "text-font": [
           "Roboto Italic",
-          "Open Sans Italic"
+          "Noto Sans Italic"
         ],
         "text-size": [
           "interpolate",
@@ -3230,18 +3696,7 @@
             26
           ]
         ],
-        "text-field": [
-          "concat",
-          [
-            "get",
-            "name:latin"
-          ],
-          "\n",
-          [
-            "get",
-            "name:nonlatin"
-          ]
-        ],
+        "text-field": "{name:en}",
         "visibility": "visible",
         "text-max-width": 5,
         "symbol-placement": "point"
@@ -3286,11 +3741,11 @@
           "stops": [
             [
               1,
-              "rgba(168, 221, 241, 0.05)"
+              "hsla(196, 72%, 80%, 0.05)"
             ],
             [
               3,
-              "rgba(194, 235, 255, 0.75)"
+              "hsla(200, 100%, 88%, 0.75)"
             ]
           ]
         },
@@ -3316,15 +3771,78 @@
       ]
     },
     {
-      "id": "housenumber",
+      "id": "Lake labels",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "water_name",
+      "minzoom": 0,
+      "layout": {
+        "text-font": [
+          "Roboto Italic",
+          "Noto Sans Italic"
+        ],
+        "text-size": {
+          "stops": [
+            [
+              10,
+              13
+            ],
+            [
+              14,
+              16
+            ],
+            [
+              22,
+              20
+            ]
+          ]
+        },
+        "text-field": [
+          "coalesce",
+          [
+            "get",
+            "name:en"
+          ],
+          [
+            "get",
+            "name"
+          ]
+        ],
+        "visibility": "visible",
+        "text-max-width": 5,
+        "symbol-placement": "line",
+        "text-letter-spacing": 0.1
+      },
+      "paint": {
+        "text-color": "hsl(205,84%,39%)",
+        "text-halo-color": "hsla(0, 100%, 100%, 0.45)",
+        "text-halo-width": 1.5
+      },
+      "metadata": {},
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "LineString"
+        ],
+        [
+          "==",
+          "class",
+          "lake"
+        ]
+      ]
+    },
+    {
+      "id": "Housenumber",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "housenumber",
-      "minzoom": 18.0,
+      "minzoom": 18,
       "layout": {
         "text-font": [
           "Roboto Regular",
-          "Open Sans Regular"
+          "Noto Sans Regular"
         ],
         "text-size": 10,
         "text-field": "{housenumber}",
@@ -3338,15 +3856,15 @@
       }
     },
     {
-      "id": "gondola",
+      "id": "Gondola",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "transportation_name",
-      "minzoom": 13.0,
+      "minzoom": 13,
       "layout": {
         "text-font": [
           "Roboto Italic",
-          "Open Sans Italic"
+          "Noto Sans Italic"
         ],
         "text-size": {
           "base": 1,
@@ -3370,15 +3888,14 @@
           ]
         },
         "text-field": [
-          "concat",
+          "coalesce",
           [
             "get",
-            "name:latin"
+            "name:en"
           ],
-          "\n",
           [
             "get",
-            "name:nonlatin"
+            "name"
           ]
         ],
         "visibility": "visible",
@@ -3397,25 +3914,22 @@
       },
       "metadata": {},
       "filter": [
-        "all",
-        [
-          "in",
-          "subclass",
-          "gondola",
-          "cable_car"
-        ]
+        "in",
+        "subclass",
+        "gondola",
+        "cable_car"
       ]
     },
     {
-      "id": "ferry",
+      "id": "Ferry",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "transportation_name",
-      "minzoom": 12.0,
+      "minzoom": 12,
       "layout": {
         "text-font": [
           "Roboto Italic",
-          "Open Sans Italic"
+          "Noto Sans Italic"
         ],
         "text-size": {
           "base": 1,
@@ -3431,15 +3945,14 @@
           ]
         },
         "text-field": [
-          "concat",
+          "coalesce",
           [
             "get",
-            "name:latin"
+            "name:en"
           ],
-          "\n",
           [
             "get",
-            "name:nonlatin"
+            "name"
           ]
         ],
         "visibility": "visible",
@@ -3457,23 +3970,61 @@
         "text-halo-width": 1
       },
       "filter": [
-        "all",
-        [
-          "==",
-          "subclass",
-          "ferry"
-        ]
+        "==",
+        "class",
+        "ferry"
       ]
     },
     {
-      "id": "oneway",
+      "id": "Oneway",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "transportation",
-      "minzoom": 15,
+      "minzoom": 16,
+      "layout": {
+        "icon-size": {
+          "stops": [
+            [
+              16,
+              0.7
+            ],
+            [
+              19,
+              1
+            ]
+          ]
+        },
+        "text-font": [
+          "Roboto Regular",
+          "Noto Sans Regular"
+        ],
+        "icon-image": "oneway",
+        "visibility": "visible",
+        "icon-rotate": [
+          "match",
+          [
+            "get",
+            "oneway"
+          ],
+          1,
+          0,
+          0
+        ],
+        "icon-padding": 2,
+        "symbol-spacing": 75,
+        "symbol-placement": "line",
+        "icon-rotation-alignment": "map"
+      },
+      "paint": {
+        "icon-color": "hsl(0, 0%, 65%)",
+        "icon-opacity": 0.5
+      },
       "filter": [
         "all",
-        ["has", "oneway"],
+        [
+          "has",
+          "oneway"
+        ],
         [
           "in",
           "class",
@@ -3485,46 +4036,20 @@
           "minor",
           "service"
         ]
-      ],
-      "layout": {
-        "icon-size": {
-          "stops": [[16, 0.8], [17, 1]]
-        },
-        "text-font": [
-          "Roboto Regular",
-          "Open Sans Regular"
-        ],
-        "icon-image": "oneway",
-        "visibility": "visible",
-        "icon-rotate": [
-          "match",
-          ["get", "oneway"],
-          1,
-          90,
-          -90
-        ],
-        "icon-padding": 2,
-        "symbol-spacing": 75,
-        "symbol-placement": "line",
-        "icon-rotation-alignment": "map"
-      },
-      "paint": {
-        "text-halo-width": 0,
-        "icon-opacity": 1
-      }
+      ]
     },
     {
-      "id": "road",
+      "id": "Road labels",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "transportation_name",
+      "minzoom": 8,
       "layout": {
         "text-font": [
           "Roboto Regular",
-          "Open Sans Regular"
+          "Noto Sans Regular"
         ],
         "text-size": {
-          "base": 1,
           "stops": [
             [
               13,
@@ -3547,42 +4072,12 @@
         "text-field": [
           "coalesce",
           [
-            "match",
-            [
-              "get",
-              "class"
-            ],
-            [
-              "tertiary"
-            ],
-            [
-              "get",
-              "ref"
-            ],
-            [
-              "concat",
-              [
-                "get",
-                "name:latin"
-              ],
-              "\n",
-              [
-                "get",
-                "name:nonlatin"
-              ]
-            ]
+            "get",
+            "name:en"
           ],
           [
-            "concat",
-            [
-              "get",
-              "name:latin"
-            ],
-            "\n",
-            [
-              "get",
-              "name:nonlatin"
-            ]
+            "get",
+            "name"
           ]
         ],
         "visibility": "visible",
@@ -3602,7 +4097,8 @@
         "text-ignore-placement": false
       },
       "paint": {
-        "text-color": "hsl(19,22%,19%)",
+        "icon-color": "hsl(0, 0%, 16%)",
+        "text-color": "hsl(0, 0%, 16%)",
         "text-halo-blur": 0.5,
         "text-halo-color": "hsl(0,0%,100%)",
         "text-halo-width": 1
@@ -3613,28 +4109,28 @@
         [
           "!in",
           "subclass",
-          "ferry",
           "gondola",
           "cable_car"
         ],
         [
           "!in",
           "class",
+          "ferry",
           "service"
         ]
       ]
     },
     {
-      "id": "highway-junction",
+      "id": "Highway junction",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "transportation_name",
-      "minzoom": 16.0,
+      "minzoom": 16,
       "layout": {
         "icon-size": 1,
         "text-font": [
           "Roboto Regular",
-          "Open Sans Regular"
+          "Noto Sans Regular"
         ],
         "text-size": 9,
         "icon-image": "exit_{ref_length}",
@@ -3676,11 +4172,11 @@
       ]
     },
     {
-      "id": "highway-shield",
+      "id": "Highway shield",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "transportation_name",
-      "minzoom": 8.0,
+      "minzoom": 8,
       "layout": {
         "icon-size": 1,
         "text-font": [
@@ -3693,7 +4189,8 @@
           [
             "literal",
             [
-              "Roboto Bold"
+              "Roboto Bold",
+              "Noto Sans Bold"
             ]
           ],
           [
@@ -3709,7 +4206,7 @@
         "visibility": "visible",
         "text-offset": [
           0,
-          0.1
+          0.05
         ],
         "text-padding": 2,
         "symbol-spacing": {
@@ -3731,7 +4228,12 @@
         "text-rotation-alignment": "viewport"
       },
       "paint": {
-        "text-color": "hsl(0,0%,18%)"
+        "icon-color": "hsl(0, 0%, 100%)",
+        "text-color": "hsl(0, 0%, 29%)",
+        "icon-halo-color": "hsl(0, 0%, 29%)",
+        "icon-halo-width": 1,
+        "text-halo-color": "hsl(0, 0%, 100%)",
+        "text-halo-width": 1
       },
       "filter": [
         "all",
@@ -3760,11 +4262,11 @@
       ]
     },
     {
-      "id": "highway-shield-us",
+      "id": "Highway shield (US)",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "transportation_name",
-      "minzoom": 7.0,
+      "minzoom": 7,
       "layout": {
         "icon-size": 1.1,
         "text-font": [
@@ -3777,13 +4279,15 @@
           [
             "literal",
             [
-              "Roboto Bold"
+              "Roboto Bold",
+              "Noto Sans Bold"
             ]
           ],
           [
             "literal",
             [
-              "Roboto Regular"
+              "Roboto Regular",
+              "Noto Sans Regular"
             ]
           ]
         ],
@@ -3793,7 +4297,7 @@
         "visibility": "visible",
         "text-offset": [
           0,
-          0.2
+          0.05
         ],
         "symbol-spacing": 200,
         "symbol-placement": {
@@ -3818,16 +4322,12 @@
         "text-rotation-alignment": "viewport"
       },
       "paint": {
-        "text-color": [
-          "match",
-          [
-            "get",
-            "network"
-          ],
-          "us-interstate",
-          "hsl(0,0%,100%)",
-          "hsl(0,0%,14%)"
-        ]
+        "icon-color": "hsl(0, 0%, 100%)",
+        "text-color": "hsl(0, 0%, 29%)",
+        "icon-halo-color": "hsl(0, 0%, 29%)",
+        "icon-halo-width": 1,
+        "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-halo-width": 0
       },
       "filter": [
         "all",
@@ -3844,23 +4344,217 @@
         [
           "in",
           "network",
-          "us-interstate",
           "us-highway",
           "us-state"
+        ],
+        [
+          "!in",
+          "class",
+          "path"
         ]
       ]
     },
     {
-      "id": "poi",
+      "id": "Highway shield interstate top (US)",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "transportation_name",
+      "minzoom": 7,
+      "layout": {
+        "icon-size": 1,
+        "text-font": [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          "motorway",
+          [
+            "literal",
+            [
+              "Roboto Bold",
+              "Noto Sans Bold"
+            ]
+          ],
+          [
+            "literal",
+            [
+              "Roboto Regular",
+              "Noto Sans Regular"
+            ]
+          ]
+        ],
+        "text-size": 9,
+        "icon-image": "{network}_{ref_length}",
+        "text-field": "{ref}",
+        "visibility": "visible",
+        "text-offset": [
+          0,
+          0.1
+        ],
+        "symbol-spacing": 200,
+        "symbol-placement": {
+          "base": 1,
+          "stops": [
+            [
+              7,
+              "point"
+            ],
+            [
+              7,
+              "line"
+            ],
+            [
+              8,
+              "line"
+            ]
+          ]
+        },
+        "icon-rotation-alignment": "viewport",
+        "text-rotation-alignment": "viewport"
+      },
+      "paint": {
+        "icon-color": "hsl(21, 100%, 45%)",
+        "text-color": "hsl(21, 100%, 45%)",
+        "icon-translate": [
+          0,
+          -4
+        ],
+        "icon-halo-color": "rgba(255, 255, 255, 1)",
+        "icon-halo-width": 1,
+        "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-halo-width": 0
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          "ref_length",
+          6
+        ],
+        [
+          "==",
+          "$type",
+          "LineString"
+        ],
+        [
+          "==",
+          "network",
+          "us-interstate"
+        ],
+        [
+          "!in",
+          "class",
+          "path"
+        ]
+      ]
+    },
+    {
+      "id": "Highway shield interstate (US)",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "transportation_name",
+      "minzoom": 7,
+      "layout": {
+        "icon-size": 1,
+        "text-font": [
+          "match",
+          [
+            "get",
+            "class"
+          ],
+          "motorway",
+          [
+            "literal",
+            [
+              "Roboto Bold",
+              "Noto Sans Bold"
+            ]
+          ],
+          [
+            "literal",
+            [
+              "Roboto Regular",
+              "Noto Sans Regular"
+            ]
+          ]
+        ],
+        "text-size": 9,
+        "icon-image": "{network}_{ref_length}",
+        "text-field": "{ref}",
+        "visibility": "visible",
+        "text-offset": [
+          0,
+          0.1
+        ],
+        "symbol-spacing": 200,
+        "symbol-placement": {
+          "base": 1,
+          "stops": [
+            [
+              7,
+              "point"
+            ],
+            [
+              7,
+              "line"
+            ],
+            [
+              8,
+              "line"
+            ]
+          ]
+        },
+        "icon-rotation-alignment": "viewport",
+        "text-rotation-alignment": "viewport"
+      },
+      "paint": {
+        "icon-color": "hsl(212, 79%, 42%)",
+        "text-color": "hsl(0, 0%, 100%)",
+        "text-translate": [
+          0,
+          -0.5
+        ],
+        "icon-halo-color": "rgba(255, 255, 255, 1)",
+        "icon-halo-width": 1,
+        "text-halo-color": "rgba(255, 255, 255, 1)",
+        "text-halo-width": 0
+      },
+      "filter": [
+        "all",
+        [
+          "<=",
+          "ref_length",
+          6
+        ],
+        [
+          "==",
+          "$type",
+          "LineString"
+        ],
+        [
+          "==",
+          "network",
+          "us-interstate"
+        ],
+        [
+          "!in",
+          "class",
+          "path"
+        ]
+      ]
+    },
+    {
+      "id": "Public",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "poi",
-      "minzoom": 13.0,
+      "minzoom": 16,
       "layout": {
         "icon-size": 1,
         "text-font": [
           "Roboto Regular",
-          "Open Sans Regular"
+          "Noto Sans Regular"
         ],
         "text-size": {
           "stops": [
@@ -3899,18 +4593,7 @@
             "dot"
           ]
         ],
-        "text-field": [
-          "concat",
-          [
-            "get",
-            "name:latin"
-          ],
-          "\n",
-          [
-            "get",
-            "name:nonlatin"
-          ]
-        ],
+        "text-field": "{name}",
         "visibility": "visible",
         "text-anchor": "top",
         "text-offset": [
@@ -3918,50 +4601,26 @@
           0.8
         ],
         "text-padding": 2,
-        "icon-optional": false,
         "text-optional": true,
-        "symbol-spacing": 250,
-        "symbol-z-order": "source",
         "text-max-width": 8,
-        "symbol-placement": "point",
-        "icon-allow-overlap": true,
-        "symbol-avoid-edges": false,
-        "icon-ignore-placement": true
-      },
-      "paint": {
-        "text-color": [
-          "match",
+        "symbol-sort-key": [
+          "to-number",
           [
             "get",
-            "class"
-          ],
-          [
-            "aerialway",
-            "bus",
-            "bicycle_rental",
-            "entrance",
-            "ferry_terminal",
-            "harbor"
-          ],
-          "hsl(215,83%,53%)",
-          [
-            "park",
-            "golf"
-          ],
-          "hsl(82,83%,25%)",
-          [
-            "hospital"
-          ],
-          "hsl(6,94%,35%)",
-          "hsl(17,17%,38%)"
-        ],
+            "rank"
+          ]
+        ]
+      },
+      "paint": {
+        "icon-color": "hsl(51, 10%, 40%)",
+        "text-color": "hsl(51, 10%, 40%)",
         "icon-opacity": [
           "step",
           [
             "zoom"
           ],
           0,
-          13,
+          16,
           [
             "match",
             [
@@ -3969,32 +4628,439 @@
               "class"
             ],
             [
-              "bicycle"
+              "atm",
+              "bank",
+              "cemetery",
+              "courthouse",
+              "townhall",
+              "town_hall"
             ],
             1,
             0
           ],
+          17,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "atm",
+              "bank",
+              "cemetery",
+              "courthouse",
+              "fire_station",
+              "townhall",
+              "town_hall",
+              "post"
+            ],
+            1,
+            0
+          ],
+          18,
+          1
+        ],
+        "text-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "atm",
+              "bank",
+              "cemetery",
+              "courthouse",
+              "townhall",
+              "town_hall"
+            ],
+            1,
+            0
+          ],
+          17,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "atm",
+              "bank",
+              "cemetery",
+              "courthouse",
+              "fire_station",
+              "townhall",
+              "town_hall",
+              "post"
+            ],
+            1,
+            0
+          ],
+          18,
+          1
+        ],
+        "icon-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.8,
+          16,
+          0
+        ],
+        "text-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.5,
+          16,
+          0
+        ],
+        "icon-halo-color": "hsl(0, 0%, 100%)",
+        "icon-halo-width": 2,
+        "text-halo-color": "hsl(0, 0%, 100%)",
+        "text-halo-width": 2
+      },
+      "metadata": {},
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "in",
+          "class",
+          "atm",
+          "bank",
+          "bbq",
+          "cemetery",
+          "courthouse",
+          "drinking_water",
+          "fire_station",
+          "fountain",
+          "hairdresser",
+          "post",
+          "prison",
+          "recycling",
+          "shower",
+          "telephone",
+          "toilets",
+          "townhall",
+          "town_hall"
+        ]
+      ]
+    },
+    {
+      "id": "Sport",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 16,
+      "layout": {
+        "icon-size": 1,
+        "text-font": [
+          "Roboto Regular",
+          "Noto Sans Regular"
+        ],
+        "text-size": {
+          "stops": [
+            [
+              12,
+              10
+            ],
+            [
+              16,
+              12
+            ],
+            [
+              22,
+              14
+            ]
+          ]
+        },
+        "icon-image": [
+          "coalesce",
+          [
+            "image",
+            [
+              "get",
+              "subclass"
+            ]
+          ],
+          [
+            "image",
+            [
+              "get",
+              "class"
+            ]
+          ],
+          [
+            "image",
+            "dot"
+          ]
+        ],
+        "text-field": "{name}",
+        "visibility": "visible",
+        "text-anchor": "top",
+        "text-offset": [
+          0,
+          0.8
+        ],
+        "text-padding": 2,
+        "text-optional": true,
+        "text-max-width": 8,
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "get",
+            "rank"
+          ]
+        ]
+      },
+      "paint": {
+        "icon-color": "hsl(129, 65%, 30%)",
+        "text-color": "hsl(129, 65%, 30%)",
+        "icon-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "playground",
+              "pitch",
+              "stadium",
+              "sports_hall",
+              "swimming_pool"
+            ],
+            1,
+            0
+          ],
+          17,
+          1
+        ],
+        "text-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "playground",
+              "pitch",
+              "stadium",
+              "sports_hall",
+              "swimming_pool"
+            ],
+            1,
+            0
+          ],
+          17,
+          1
+        ],
+        "icon-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.8,
+          16,
+          0
+        ],
+        "text-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.5,
+          16,
+          0
+        ],
+        "icon-halo-color": "hsl(0, 0%, 100%)",
+        "icon-halo-width": 2,
+        "text-halo-color": "hsl(0, 0%, 100%)",
+        "text-halo-width": 2
+      },
+      "metadata": {},
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "in",
+          "class",
+          "american_football",
+          "athletics",
+          "archery",
+          "baseball",
+          "basketball",
+          "climbing",
+          "equestrian",
+          "fitness",
+          "fitness_centre",
+          "golf",
+          "motor",
+          "multi",
+          "playground",
+          "pitch",
+          "running",
+          "sauna",
+          "soccer",
+          "sport",
+          "stadium",
+          "sports_centre",
+          "sports_hall",
+          "swimming",
+          "swimming_area",
+          "swimming_pool",
+          "tennis",
+          "volleyball",
+          "water_park"
+        ],
+        [
+          "has",
+          "name"
+        ]
+      ]
+    },
+    {
+      "id": "Education",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 15,
+      "layout": {
+        "icon-size": 1,
+        "text-font": [
+          "Roboto Regular",
+          "Noto Sans Regular"
+        ],
+        "text-size": {
+          "stops": [
+            [
+              12,
+              10
+            ],
+            [
+              16,
+              12
+            ],
+            [
+              22,
+              14
+            ]
+          ]
+        },
+        "icon-image": [
+          "coalesce",
+          [
+            "image",
+            [
+              "get",
+              "subclass"
+            ]
+          ],
+          [
+            "image",
+            [
+              "get",
+              "class"
+            ]
+          ],
+          [
+            "image",
+            "school"
+          ]
+        ],
+        "text-field": "{name}",
+        "visibility": "visible",
+        "text-anchor": "top",
+        "text-offset": [
+          0,
+          0.8
+        ],
+        "text-padding": 2,
+        "text-optional": true,
+        "text-max-width": 8,
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "get",
+            "rank"
+          ]
+        ]
+      },
+      "paint": {
+        "icon-color": "hsl(175, 50%, 40%)",
+        "text-color": "hsl(175, 50%, 40%)",
+        "icon-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
           15,
           [
             "match",
             [
               "get",
-              "class"
+              "subclass"
             ],
             [
-              "aerialway",
-              "bicycle",
-              "castle",
-              "cemetery",
-              "diplomatic",
-              "ferry_terminal",
-              "golf",
-              "harbor",
-              "hospital",
-              "stadium",
-              "park",
-              "place_of_worship",
-              "zoo"
+              "university"
             ],
             1,
             0
@@ -4004,34 +5070,16 @@
             "match",
             [
               "get",
-              "class"
+              "subclass"
             ],
             [
-              "bicycle",
-              "castle",
-              "cemetery",
-              "town_hall",
-              "diplomatic",
-              "golf",
-              "ferry_terminal",
-              "hospital",
-              "stadium",
-              "park",
-              "college",
-              "university",
-              "place_of_worship",
-              "zoo",
-              "museum",
               "school",
-              "parking",
-              "lodging"
+              "university"
             ],
             1,
             0
           ],
           17,
-          1,
-          22,
           1
         ],
         "text-opacity": [
@@ -4045,22 +5093,414 @@
             "match",
             [
               "get",
+              "subclass"
+            ],
+            [
+              "university"
+            ],
+            1,
+            0
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "subclass"
+            ],
+            [
+              "school",
+              "university"
+            ],
+            1,
+            0
+          ],
+          17,
+          1
+        ],
+        "icon-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.8,
+          16,
+          0
+        ],
+        "text-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.5,
+          16,
+          0
+        ],
+        "icon-halo-color": "hsl(0, 0%, 100%)",
+        "icon-halo-width": 2,
+        "text-halo-color": "hsl(0, 0%, 100%)",
+        "text-halo-width": 2
+      },
+      "metadata": {},
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "in",
+          "class",
+          "college",
+          "childcare",
+          "dancing_school",
+          "driving_school",
+          "kindergarten",
+          "school",
+          "university"
+        ],
+        [
+          "has",
+          "name"
+        ]
+      ]
+    },
+    {
+      "id": "Tourism",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 14,
+      "layout": {
+        "icon-size": 1,
+        "text-font": [
+          "Roboto Regular",
+          "Noto Sans Regular"
+        ],
+        "text-size": {
+          "stops": [
+            [
+              12,
+              10
+            ],
+            [
+              16,
+              12
+            ],
+            [
+              22,
+              14
+            ]
+          ]
+        },
+        "icon-image": [
+          "coalesce",
+          [
+            "image",
+            [
+              "get",
+              "subclass"
+            ]
+          ],
+          [
+            "image",
+            [
+              "get",
+              "class"
+            ]
+          ],
+          [
+            "image",
+            "dot"
+          ]
+        ],
+        "text-field": "{name}",
+        "visibility": "visible",
+        "text-anchor": "top",
+        "text-offset": [
+          0,
+          0.8
+        ],
+        "text-padding": 2,
+        "text-optional": true,
+        "text-max-width": 8,
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "get",
+            "rank"
+          ]
+        ]
+      },
+      "paint": {
+        "icon-color": "hsl(283, 55%, 35%)",
+        "text-color": "hsl(283, 55%, 35%)",
+        "icon-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
+          14,
+          [
+            "match",
+            [
+              "get",
+              "subclass"
+            ],
+            [
+              "attraction"
+            ],
+            1,
+            0
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "subclass"
+            ],
+            [
+              "attraction",
+              "castle",
+              "hotel",
+              "zoo"
+            ],
+            1,
+            0
+          ],
+          17,
+          1
+        ],
+        "text-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
+          14,
+          [
+            "match",
+            [
+              "get",
+              "subclass"
+            ],
+            [
+              "attraction"
+            ],
+            1,
+            0
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "subclass"
+            ],
+            [
+              "attraction",
+              "castle",
+              "hotel",
+              "zoo"
+            ],
+            1,
+            0
+          ],
+          17,
+          1
+        ],
+        "icon-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.8,
+          16,
+          0
+        ],
+        "text-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.5,
+          16,
+          0
+        ],
+        "icon-halo-color": "hsl(0, 0%, 100%)",
+        "icon-halo-width": 2,
+        "text-halo-color": "hsl(0, 0%, 100%)",
+        "text-halo-width": 2
+      },
+      "metadata": {},
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "in",
+          "class",
+          "apartment",
+          "aquarium",
+          "attraction",
+          "campsite",
+          "camp_site",
+          "caravan_site",
+          "castle",
+          "chalet",
+          "guest_house",
+          "hotel",
+          "hostel",
+          "information",
+          "lodging",
+          "motel",
+          "reservoir",
+          "ruins",
+          "theme_park",
+          "zoo"
+        ],
+        [
+          "!=",
+          "subclass",
+          "board"
+        ],
+        [
+          "has",
+          "name"
+        ]
+      ]
+    },
+    {
+      "id": "Culture",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 14,
+      "layout": {
+        "icon-size": 1,
+        "text-font": [
+          "Roboto Regular",
+          "Noto Sans Regular"
+        ],
+        "text-size": {
+          "stops": [
+            [
+              12,
+              10
+            ],
+            [
+              16,
+              12
+            ],
+            [
+              22,
+              14
+            ]
+          ]
+        },
+        "icon-image": [
+          "coalesce",
+          [
+            "image",
+            [
+              "get",
+              "subclass"
+            ]
+          ],
+          [
+            "image",
+            [
+              "get",
+              "class"
+            ]
+          ],
+          [
+            "image",
+            "dot"
+          ]
+        ],
+        "text-field": "{name}",
+        "visibility": "visible",
+        "text-anchor": "top",
+        "text-offset": [
+          0,
+          0.8
+        ],
+        "text-padding": 2,
+        "text-optional": true,
+        "text-max-width": 8,
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "get",
+            "rank"
+          ]
+        ]
+      },
+      "paint": {
+        "icon-color": "hsl(315, 35%, 50%)",
+        "text-color": "hsl(315, 35%, 50%)",
+        "icon-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
+          14,
+          [
+            "match",
+            [
+              "get",
               "class"
             ],
             [
-              "castle",
-              "courthouse",
-              "diplomatic",
-              "golf",
-              "ferry_terminal",
-              "aerialway",
-              "harbor",
-              "stadium",
-              "park",
-              "university",
-              "hospital",
-              "place_of_worship",
-              "zoo"
+              "museum"
+            ],
+            1,
+            0
+          ],
+          15,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "cinema",
+              "art_gallery",
+              "museum",
+              "theatre"
             ],
             1,
             0
@@ -4073,47 +5513,384 @@
               "class"
             ],
             [
-              "castle",
-              "cemetery",
-              "town_hall",
-              "diplomatic",
-              "golf",
-              "harbor",
-              "college",
-              "university",
-              "ferry_terminal",
-              "hospital",
-              "stadium",
-              "park",
-              "place_of_worship",
-              "zoo",
+              "cinema",
+              "art_gallery",
+              "library",
               "museum",
-              "school",
-              "lodging"
+              "place_of_worship",
+              "theatre"
             ],
             1,
             0
           ],
           17,
-          1,
-          22,
           1
         ],
-        "text-halo-blur": 0.5,
-        "text-halo-color": "hsl(0,0%,100%)",
-        "text-halo-width": 1
+        "text-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
+          14,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "museum"
+            ],
+            1,
+            0
+          ],
+          15,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "cinema",
+              "art_gallery",
+              "museum",
+              "theatre"
+            ],
+            1,
+            0
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "cinema",
+              "art_gallery",
+              "library",
+              "museum",
+              "place_of_worship",
+              "theatre"
+            ],
+            1,
+            0
+          ],
+          17,
+          1
+        ],
+        "icon-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.8,
+          16,
+          0
+        ],
+        "text-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.5,
+          16,
+          0
+        ],
+        "icon-halo-color": "hsl(0, 0%, 100%)",
+        "icon-halo-width": 2,
+        "text-halo-color": "hsl(0, 0%, 100%)",
+        "text-halo-width": 2
       },
       "metadata": {},
       "filter": [
         "all",
         [
-          "has",
-          "name"
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "in",
+          "class",
+          "art_gallery",
+          "archeological_site",
+          "cinema",
+          "community_centre",
+          "gallery",
+          "library",
+          "monastery",
+          "monument",
+          "museum",
+          "opera",
+          "place_of_worship",
+          "planetarium",
+          "theatre"
         ],
         [
           "!=",
+          "subclass",
+          "artwork"
+        ],
+        [
+          "has",
+          "name"
+        ]
+      ]
+    },
+    {
+      "id": "Shopping",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 14,
+      "layout": {
+        "icon-size": 1,
+        "text-font": [
+          "Roboto Regular",
+          "Noto Sans Regular"
+        ],
+        "text-size": {
+          "stops": [
+            [
+              12,
+              10
+            ],
+            [
+              16,
+              12
+            ],
+            [
+              22,
+              14
+            ]
+          ]
+        },
+        "icon-image": [
+          "coalesce",
+          [
+            "image",
+            [
+              "get",
+              "subclass"
+            ]
+          ],
+          [
+            "image",
+            [
+              "get",
+              "class"
+            ]
+          ],
+          [
+            "image",
+            "shop"
+          ]
+        ],
+        "text-field": "{name}",
+        "visibility": "visible",
+        "text-anchor": "top",
+        "text-offset": [
+          0,
+          0.8
+        ],
+        "text-padding": 2,
+        "text-optional": true,
+        "text-max-width": 8,
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "get",
+            "rank"
+          ]
+        ]
+      },
+      "paint": {
+        "icon-color": "hsl(18, 17%, 30%)",
+        "text-color": "hsl(18, 17%, 30%)",
+        "icon-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
+          14,
+          [
+            "match",
+            [
+              "get",
+              "subclass"
+            ],
+            [
+              "mall"
+            ],
+            1,
+            0
+          ],
+          15,
+          [
+            "match",
+            [
+              "get",
+              "subclass"
+            ],
+            [
+              "mall",
+              "supermarket"
+            ],
+            1,
+            0
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "subclass"
+            ],
+            [
+              "bakery",
+              "chemist",
+              "mall",
+              "supermarket"
+            ],
+            1,
+            0
+          ],
+          17,
+          1
+        ],
+        "text-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
+          14,
+          [
+            "match",
+            [
+              "get",
+              "subclass"
+            ],
+            [
+              "mall"
+            ],
+            1,
+            0
+          ],
+          15,
+          [
+            "match",
+            [
+              "get",
+              "subclass"
+            ],
+            [
+              "mall",
+              "supermarket"
+            ],
+            1,
+            0
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "subclass"
+            ],
+            [
+              "bakery",
+              "chemist",
+              "mall",
+              "supermarket"
+            ],
+            1,
+            0
+          ],
+          17,
+          1
+        ],
+        "icon-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.8,
+          16,
+          0
+        ],
+        "text-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.5,
+          16,
+          0
+        ],
+        "icon-halo-color": "hsl(0, 0%, 100%)",
+        "icon-halo-width": 2,
+        "text-halo-color": "hsl(0, 0%, 100%)",
+        "text-halo-width": 2
+      },
+      "metadata": {},
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "in",
           "class",
-          "railway"
+          "alcohol_shop",
+          "bakery",
+          "butcher",
+          "book",
+          "books",
+          "clothing_store",
+          "convenience",
+          "gift",
+          "grocery",
+          "laundry",
+          "mall",
+          "music",
+          "shop",
+          "supermarket"
+        ],
+        [
+          "has",
+          "name"
         ]
       ]
     },
@@ -4181,91 +5958,880 @@
       }
     },
     {
-      "id": "park",
+      "id": "Food",
       "type": "symbol",
       "source": "openmaptiles",
-      "source-layer": "park",
-      "minzoom": 7.0,
-      "maxzoom": 12.0,
+      "source-layer": "poi",
+      "minzoom": 14,
       "layout": {
+        "icon-size": 1,
         "text-font": [
-          "Roboto Italic",
-          "Open Sans Italic"
+          "Roboto Regular",
+          "Noto Sans Regular"
         ],
         "text-size": {
-          "base": 1.2,
           "stops": [
             [
-              7,
-              9
+              12,
+              10
             ],
             [
-              12,
+              16,
+              12
+            ],
+            [
+              22,
               14
             ]
           ]
         },
-        "text-field": [
-          "concat",
+        "icon-image": [
+          "coalesce",
           [
-            "get",
-            "name:latin"
+            "image",
+            [
+              "get",
+              "subclass"
+            ]
           ],
-          "\n",
           [
-            "get",
-            "name:nonlatin"
+            "image",
+            [
+              "get",
+              "class"
+            ]
+          ],
+          [
+            "image",
+            "restaurant"
           ]
         ],
+        "text-field": "{name}",
         "visibility": "visible",
-        "symbol-spacing": 250,
-        "text-max-width": 10,
-        "text-transform": "none",
-        "symbol-avoid-edges": false,
-        "text-letter-spacing": 0.1
+        "text-anchor": "top",
+        "text-offset": [
+          0,
+          0.8
+        ],
+        "text-padding": 2,
+        "text-optional": true,
+        "text-max-width": 8,
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "get",
+            "rank"
+          ]
+        ]
       },
       "paint": {
-        "text-color": "hsl(90,67%,20%)",
-        "text-halo-blur": 1,
-        "text-halo-color": "hsl(84,100%,93%)",
-        "text-halo-width": 0.75
+        "icon-color": "hsl(18, 24%, 44%)",
+        "text-color": "hsl(18, 24%, 44%)",
+        "icon-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
+          14,
+          [
+            "case",
+            [
+              "<=",
+              [
+                "get",
+                "rank"
+              ],
+              20
+            ],
+            1,
+            0
+          ],
+          15,
+          [
+            "case",
+            [
+              "<=",
+              [
+                "get",
+                "rank"
+              ],
+              99
+            ],
+            1,
+            0
+          ],
+          16,
+          [
+            "case",
+            [
+              "<=",
+              [
+                "get",
+                "rank"
+              ],
+              499
+            ],
+            1,
+            0
+          ],
+          17,
+          1
+        ],
+        "text-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
+          14,
+          [
+            "case",
+            [
+              "<=",
+              [
+                "get",
+                "rank"
+              ],
+              20
+            ],
+            1,
+            0
+          ],
+          15,
+          [
+            "case",
+            [
+              "<=",
+              [
+                "get",
+                "rank"
+              ],
+              99
+            ],
+            1,
+            0
+          ],
+          16,
+          [
+            "case",
+            [
+              "<=",
+              [
+                "get",
+                "rank"
+              ],
+              499
+            ],
+            1,
+            0
+          ],
+          17,
+          1
+        ],
+        "icon-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.8,
+          16,
+          0
+        ],
+        "text-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.5,
+          16,
+          0
+        ],
+        "icon-halo-color": "hsl(0, 0%, 100%)",
+        "icon-halo-width": 2,
+        "text-halo-color": "hsl(0, 0%, 100%)",
+        "text-halo-width": 2
       },
       "metadata": {},
       "filter": [
         "all",
         [
           "==",
-          "rank",
-          1
+          "$type",
+          "Point"
+        ],
+        [
+          "in",
+          "class",
+          "bar",
+          "beer",
+          "biergarten",
+          "cafe",
+          "fast_food",
+          "food_court",
+          "ice_cream",
+          "pub",
+          "restaurant"
+        ],
+        [
+          "has",
+          "name"
         ]
       ]
     },
     {
-      "id": "place",
+      "id": "Transport",
       "type": "symbol",
       "source": "openmaptiles",
-      "source-layer": "place",
-      "minzoom": 4.0,
+      "source-layer": "poi",
+      "minzoom": 14,
       "layout": {
-        "icon-size": {
+        "icon-size": 1,
+        "text-font": [
+          "Roboto Regular",
+          "Noto Sans Regular"
+        ],
+        "text-size": {
           "stops": [
             [
-              6,
-              0.5
+              12,
+              10
             ],
             [
-              8.9,
-              0.8
+              16,
+              12
             ],
             [
-              9,
-              0
+              22,
+              14
             ]
           ]
         },
+        "icon-image": [
+          "coalesce",
+          [
+            "image",
+            [
+              "get",
+              "subclass"
+            ]
+          ],
+          [
+            "image",
+            [
+              "get",
+              "class"
+            ]
+          ],
+          [
+            "image",
+            "dot"
+          ]
+        ],
+        "text-field": "{name}",
+        "visibility": "visible",
+        "text-anchor": "top",
+        "text-offset": [
+          0,
+          0.8
+        ],
+        "text-padding": 2,
+        "text-optional": true,
+        "text-max-width": 8,
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "get",
+            "rank"
+          ]
+        ]
+      },
+      "paint": {
+        "icon-color": "hsl(215, 81%, 35%)",
+        "text-color": "hsl(215, 81%, 35%)",
+        "icon-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
+          14,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "ferry_terminal",
+              "fuel",
+              "terminal"
+            ],
+            1,
+            0
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "car",
+              "car_rental",
+              "car_repair",
+              "charging_station",
+              "ferry_terminal",
+              "fuel",
+              "harbor",
+              "heliport",
+              "highway_rest_area",
+              "terminal",
+              "toll"
+            ],
+            1,
+            0
+          ],
+          17,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "car",
+              "car_rental",
+              "car_repair",
+              "charging_station",
+              "ferry_terminal",
+              "fuel",
+              "harbor",
+              "heliport",
+              "highway_rest_area",
+              "parking",
+              "parking_garage",
+              "parking_paid",
+              "terminal",
+              "toll"
+            ],
+            1,
+            0
+          ],
+          18,
+          1
+        ],
+        "text-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
+          14,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "ferry_terminal",
+              "fuel",
+              "terminal"
+            ],
+            1,
+            0
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "car",
+              "car_rental",
+              "car_repair",
+              "charging_station",
+              "ferry_terminal",
+              "fuel",
+              "harbor",
+              "heliport",
+              "highway_rest_area",
+              "terminal",
+              "toll"
+            ],
+            1,
+            0
+          ],
+          17,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "car",
+              "car_rental",
+              "car_repair",
+              "charging_station",
+              "ferry_terminal",
+              "fuel",
+              "harbor",
+              "heliport",
+              "highway_rest_area",
+              "parking",
+              "parking_garage",
+              "parking_paid",
+              "terminal",
+              "toll"
+            ],
+            1,
+            0
+          ],
+          18,
+          1
+        ],
+        "icon-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.8,
+          16,
+          0
+        ],
+        "text-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.5,
+          16,
+          0
+        ],
+        "icon-halo-color": "hsl(0, 0%, 100%)",
+        "icon-halo-width": 2,
+        "text-halo-color": "hsl(0, 0%, 100%)",
+        "text-halo-width": 2
+      },
+      "metadata": {},
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "in",
+          "class",
+          "bicycle",
+          "bicycle_parking",
+          "bicycle_rental",
+          "car",
+          "car_rental",
+          "car_repair",
+          "charging_station",
+          "ferry_terminal",
+          "fuel",
+          "harbor",
+          "heliport",
+          "highway_rest_area",
+          "motorcycle_parking",
+          "parking",
+          "parking_garage",
+          "parking_paid",
+          "scooter",
+          "terminal",
+          "toll"
+        ]
+      ]
+    },
+    {
+      "id": "Park",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 14,
+      "layout": {
         "text-font": [
           "Roboto Regular",
-          "Open Sans Regular"
+          "Noto Sans Regular"
+        ],
+        "text-size": {
+          "stops": [
+            [
+              12,
+              10
+            ],
+            [
+              16,
+              12
+            ],
+            [
+              22,
+              14
+            ]
+          ]
+        },
+        "icon-image": "park",
+        "text-field": "{name}",
+        "visibility": "visible",
+        "icon-anchor": "center",
+        "text-anchor": "top",
+        "text-offset": [
+          0,
+          0.8
+        ],
+        "text-padding": 2,
+        "text-optional": true,
+        "text-max-width": 8,
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "get",
+            "rank"
+          ]
+        ]
+      },
+      "paint": {
+        "icon-color": "hsl(82, 83%, 25%)",
+        "text-color": "hsl(82, 83%, 25%)",
+        "icon-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
+          14,
+          [
+            "case",
+            [
+              "<=",
+              [
+                "get",
+                "rank"
+              ],
+              10
+            ],
+            1,
+            0
+          ],
+          15,
+          [
+            "case",
+            [
+              "<=",
+              [
+                "get",
+                "rank"
+              ],
+              99
+            ],
+            1,
+            0
+          ],
+          16,
+          1
+        ],
+        "text-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
+          14,
+          [
+            "case",
+            [
+              "<=",
+              [
+                "get",
+                "rank"
+              ],
+              10
+            ],
+            1,
+            0
+          ],
+          15,
+          [
+            "case",
+            [
+              "<=",
+              [
+                "get",
+                "rank"
+              ],
+              99
+            ],
+            1,
+            0
+          ],
+          16,
+          1
+        ],
+        "icon-halo-blur": 0,
+        "text-halo-blur": 0,
+        "icon-halo-color": "hsl(0, 0%, 100%)",
+        "icon-halo-width": 2,
+        "text-halo-color": "hsl(0, 0%, 100%)",
+        "text-halo-width": 2
+      },
+      "metadata": {},
+      "filter": [
+        "all",
+        [
+          "==",
+          "class",
+          "park"
+        ],
+        [
+          "has",
+          "name"
+        ]
+      ]
+    },
+    {
+      "id": "Healthcare",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "poi",
+      "minzoom": 14,
+      "layout": {
+        "icon-size": 1,
+        "text-font": [
+          "Roboto Regular",
+          "Noto Sans Regular"
+        ],
+        "text-size": {
+          "stops": [
+            [
+              12,
+              10
+            ],
+            [
+              16,
+              12
+            ],
+            [
+              22,
+              14
+            ]
+          ]
+        },
+        "icon-image": [
+          "coalesce",
+          [
+            "image",
+            [
+              "get",
+              "subclass"
+            ]
+          ],
+          [
+            "image",
+            [
+              "get",
+              "class"
+            ]
+          ],
+          [
+            "image",
+            "hospital"
+          ]
+        ],
+        "text-field": "{name}",
+        "visibility": "visible",
+        "text-anchor": "top",
+        "text-offset": [
+          0,
+          0.8
+        ],
+        "text-padding": 2,
+        "text-optional": true,
+        "text-max-width": 8,
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "get",
+            "rank"
+          ]
+        ]
+      },
+      "paint": {
+        "icon-color": "hsl(6, 96%, 35%)",
+        "text-color": "hsl(6, 96%, 35%)",
+        "icon-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
+          14,
+          [
+            "match",
+            [
+              "get",
+              "subclass"
+            ],
+            [
+              "hospital"
+            ],
+            1,
+            0
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "clinic",
+              "hospital"
+            ],
+            1,
+            0
+          ],
+          17,
+          1
+        ],
+        "text-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
+          14,
+          [
+            "match",
+            [
+              "get",
+              "subclass"
+            ],
+            [
+              "hospital"
+            ],
+            1,
+            0
+          ],
+          16,
+          [
+            "match",
+            [
+              "get",
+              "class"
+            ],
+            [
+              "clinic",
+              "hospital"
+            ],
+            1,
+            0
+          ],
+          17,
+          1
+        ],
+        "icon-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.8,
+          16,
+          0
+        ],
+        "text-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.5,
+          16,
+          0
+        ],
+        "icon-halo-color": "hsl(0, 0%, 100%)",
+        "icon-halo-width": 2,
+        "text-halo-color": "hsl(0, 0%, 100%)",
+        "text-halo-width": 2
+      },
+      "metadata": {},
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "Point"
+        ],
+        [
+          "in",
+          "class",
+          "clinic",
+          "dentist",
+          "doctors",
+          "first_aid",
+          "hospital",
+          "pharmacy",
+          "veterinary"
+        ],
+        [
+          "has",
+          "name"
+        ]
+      ]
+    },
+    {
+      "id": "Place labels",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "minzoom": 4,
+      "layout": {
+        "text-font": [
+          "Roboto Regular",
+          "Noto Sans Regular"
         ],
         "text-size": [
           "interpolate",
@@ -4323,26 +6889,14 @@
             16
           ]
         ],
-        "text-field": [
-          "concat",
-          [
-            "get",
-            "name:latin"
-          ],
-          "\n",
-          [
-            "get",
-            "name:nonlatin"
-          ]
-        ],
+        "text-field": "{name}",
         "visibility": "visible",
-        "text-anchor": "bottom",
+        "text-anchor": "center",
         "text-offset": [
           0,
           0
         ],
         "text-padding": 2,
-        "icon-optional": false,
         "text-max-width": [
           "match",
           [
@@ -4371,7 +6925,6 @@
           "uppercase",
           "none"
         ],
-        "icon-allow-overlap": true,
         "text-letter-spacing": [
           "match",
           [
@@ -4390,22 +6943,7 @@
         ]
       },
       "paint": {
-        "text-color": [
-          "match",
-          [
-            "get",
-            "class"
-          ],
-          [
-            "suburb",
-            "neighborhood",
-            "neighbourhood",
-            "quarter"
-          ],
-          "hsl(0,0%,33%)",
-          "hsl(0,0%,20%)"
-        ],
-        "icon-opacity": 1,
+        "text-color": "hsl(0,0%,25%)",
         "text-opacity": [
           "step",
           [
@@ -4444,48 +6982,34 @@
       },
       "metadata": {},
       "filter": [
-        "all",
-        [
-          "!in",
-          "class",
-          "continent",
-          "country",
-          "state",
-          "region",
-          "province",
-          "city",
-          "town"
-        ]
+        "!in",
+        "class",
+        "continent",
+        "country",
+        "state",
+        "region",
+        "province",
+        "city",
+        "town"
       ]
     },
     {
-      "id": "station",
+      "id": "Station",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "poi",
-      "minzoom": 12.0,
+      "minzoom": 12,
       "layout": {
-        "icon-size": {
-          "stops": [
-            [
-              13,
-              0.8
-            ],
-            [
-              18,
-              1
-            ]
-          ]
-        },
+        "icon-size": 1,
         "text-font": [
           "Roboto Medium",
-          "Open Sans Semibold"
+          "Noto Sans Regular"
         ],
         "text-size": {
           "stops": [
             [
-              12,
-              10
+              13,
+              11
             ],
             [
               16,
@@ -4493,7 +7017,7 @@
             ],
             [
               22,
-              15
+              16
             ]
           ]
         },
@@ -4508,28 +7032,21 @@
           ],
           "railway",
           [
-            "subway",
-            "halt"
+            "subway"
           ],
           "subway",
+          [
+            "bus_stop",
+            "bus_station"
+          ],
+          "bus_stop",
           [
             "tram_stop"
           ],
           "tramway",
-          ""
+          "dot"
         ],
-        "text-field": [
-          "concat",
-          [
-            "get",
-            "name:latin"
-          ],
-          "\n",
-          [
-            "get",
-            "name:nonlatin"
-          ]
-        ],
+        "text-field": "{name}",
         "visibility": "visible",
         "text-anchor": "top",
         "text-offset": [
@@ -4537,11 +7054,20 @@
           0.9
         ],
         "text-padding": 2,
+        "text-optional": true,
         "text-max-width": 9,
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "get",
+            "rank"
+          ]
+        ],
         "text-line-height": 0.9
       },
       "paint": {
-        "text-color": "hsl(215,83%,53%)",
+        "icon-color": "hsl(215, 83%, 53%)",
+        "text-color": "hsl(215, 83%, 53%)",
         "icon-opacity": [
           "step",
           [
@@ -4570,12 +7096,13 @@
             ],
             [
               "station",
-              "subway"
+              "subway",
+              "tram_stop"
             ],
             1,
             0
           ],
-          15,
+          16,
           [
             "match",
             [
@@ -4583,8 +7110,8 @@
               "subclass"
             ],
             [
+              "bus_stop",
               "station",
-              "halt",
               "subway",
               "tram_stop"
             ],
@@ -4592,8 +7119,6 @@
             0
           ],
           17,
-          1,
-          22,
           1
         ],
         "text-opacity": [
@@ -4624,12 +7149,13 @@
             ],
             [
               "station",
-              "subway"
+              "subway",
+              "tram_stop"
             ],
             1,
             0
           ],
-          15,
+          16,
           [
             "match",
             [
@@ -4637,29 +7163,59 @@
               "subclass"
             ],
             [
+              "bus_stop",
               "station",
               "subway",
-              "halt",
               "tram_stop"
             ],
             1,
             0
           ],
           17,
-          1,
-          22,
           1
         ],
-        "text-halo-blur": 0.5,
-        "text-halo-color": "hsl(0,0%,100%)",
-        "text-halo-width": 1
+        "icon-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.8,
+          16,
+          0
+        ],
+        "text-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          12,
+          1,
+          14,
+          0.5,
+          16,
+          0
+        ],
+        "icon-halo-color": "hsl(0, 0%, 100%)",
+        "icon-halo-width": 2,
+        "text-halo-color": "hsl(0, 0%, 100%)",
+        "text-halo-width": 2
       },
       "metadata": {},
       "filter": [
         "all",
         [
-          "==",
+          "in",
           "class",
+          "bus",
           "railway"
         ],
         [
@@ -4669,11 +7225,49 @@
       ]
     },
     {
-      "id": "airport",
+      "id": "Airport gate",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "aeroway",
+      "minzoom": 15,
+      "layout": {
+        "text-font": [
+          "Roboto Medium",
+          "Noto Sans Regular"
+        ],
+        "text-size": {
+          "stops": [
+            [
+              15,
+              10
+            ],
+            [
+              22,
+              18
+            ]
+          ]
+        },
+        "text-field": "{ref}",
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "hsl(0,0%,40%)",
+        "text-halo-blur": 0.5,
+        "text-halo-color": "hsl(0,0%,100%)",
+        "text-halo-width": 1
+      },
+      "filter": [
+        "==",
+        "class",
+        "gate"
+      ]
+    },
+    {
+      "id": "Airport",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "aerodrome_label",
-      "minzoom": 8.0,
+      "minzoom": 8,
       "layout": {
         "icon-size": [
           "interpolate",
@@ -4710,7 +7304,7 @@
         ],
         "text-font": [
           "Roboto Medium",
-          "Open Sans Semibold"
+          "Noto Sans Regular"
         ],
         "text-size": [
           "interpolate",
@@ -4767,7 +7361,7 @@
             ],
             [
               12,
-              "{name:latin}"
+              "{name:en}"
             ]
           ]
         },
@@ -4780,14 +7374,70 @@
         "text-padding": 2,
         "text-optional": true,
         "text-max-width": 9,
-        "text-line-height": 1.4
+        "text-line-height": 1.2
       },
       "paint": {
-        "text-color": "hsl(215,83%,53%)",
+        "icon-color": "hsl(215, 83%, 53%)",
+        "text-color": "hsl(215, 83%, 53%)",
         "icon-opacity": 1,
-        "text-halo-blur": 0.5,
-        "text-halo-color": "hsl(0,0%,100%)",
-        "text-halo-width": 1
+        "icon-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          8,
+          1,
+          10,
+          0.5,
+          12,
+          0
+        ],
+        "text-halo-blur": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          8,
+          1,
+          10,
+          0.5,
+          12,
+          0
+        ],
+        "icon-halo-color": "hsl(0, 0%, 100%)",
+        "icon-halo-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          8,
+          1,
+          12,
+          2
+        ],
+        "text-halo-color": "hsl(0, 0%, 100%)",
+        "text-halo-width": [
+          "interpolate",
+          [
+            "linear"
+          ],
+          [
+            "zoom"
+          ],
+          8,
+          1,
+          12,
+          2
+        ]
       },
       "filter": [
         "all",
@@ -4796,64 +7446,23 @@
           "iata"
         ],
         [
-          "!=",
+          "!in",
           "class",
           "public"
         ]
       ]
     },
     {
-      "id": "airport_gate",
-      "type": "symbol",
-      "source": "openmaptiles",
-      "source-layer": "aeroway",
-      "minzoom": 15.0,
-      "layout": {
-        "text-font": [
-          "Roboto Medium",
-          "Open Sans Semibold"
-        ],
-        "text-size": {
-          "stops": [
-            [
-              15,
-              10
-            ],
-            [
-              22,
-              18
-            ]
-          ]
-        },
-        "text-field": "{ref}",
-        "visibility": "visible"
-      },
-      "paint": {
-        "text-color": "hsl(0,0%,40%)",
-        "text-halo-blur": 0.5,
-        "text-halo-color": "hsl(0,0%,100%)",
-        "text-halo-width": 1
-      },
-      "filter": [
-        "all",
-        [
-          "==",
-          "class",
-          "gate"
-        ]
-      ]
-    },
-    {
-      "id": "state",
+      "id": "State labels",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "place",
-      "minzoom": 3.0,
-      "maxzoom": 9.0,
+      "minzoom": 3,
+      "maxzoom": 9,
       "layout": {
         "text-font": [
           "Roboto Medium",
-          "Open Sans Semibold"
+          "Noto Sans Regular"
         ],
         "text-size": {
           "stops": [
@@ -4872,25 +7481,66 @@
           ]
         },
         "text-field": [
-          "concat",
+          "coalesce",
           [
             "get",
-            "name:latin"
+            "name:en"
           ],
-          "\n",
           [
             "get",
-            "name:nonlatin"
+            "name"
           ]
         ],
         "visibility": "visible",
         "text-padding": 2,
         "text-max-width": 8,
         "text-transform": "uppercase",
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "get",
+            "rank"
+          ]
+        ],
         "text-letter-spacing": 0.1
       },
       "paint": {
         "text-color": "hsl(48,4%,44%)",
+        "text-opacity": [
+          "step",
+          [
+            "zoom"
+          ],
+          0,
+          3,
+          [
+            "case",
+            [
+              "<=",
+              [
+                "get",
+                "rank"
+              ],
+              3
+            ],
+            1,
+            0
+          ],
+          8,
+          [
+            "case",
+            [
+              "==",
+              [
+                "get",
+                "rank"
+              ],
+              0
+            ],
+            0,
+            1
+          ]
+        ],
         "text-halo-color": "hsla(0,0%,100%,0.75)",
         "text-halo-width": 0.8
       },
@@ -4911,43 +7561,31 @@
       ]
     },
     {
-      "id": "town",
+      "id": "Town labels",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "place",
-      "minzoom": 4.0,
-      "maxzoom": 16.0,
+      "minzoom": 4,
+      "maxzoom": 16,
       "layout": {
-        "icon-size": {
-          "stops": [
-            [
-              6,
-              0.5
-            ],
-            [
-              14,
-              0.8
-            ]
-          ]
-        },
-        "text-font": {
-          "stops": [
-            [
-              6,
-              [
-                "Roboto Regular",
-                "Open Sans Regular"
-              ]
-            ],
-            [
-              12,
-              [
-                "Roboto Medium",
-                "Open Sans Semibold"
-              ]
-            ]
-          ]
-        },
+        "icon-size": [
+          "interpolate",
+          [
+            "exponential",
+            1
+          ],
+          [
+            "zoom"
+          ],
+          6,
+          0.3,
+          14,
+          0.4
+        ],
+        "text-font": [
+          "Roboto Regular",
+          "Noto Sans Regular"
+        ],
         "text-size": [
           "interpolate",
           [
@@ -5013,107 +7651,66 @@
           ]
         },
         "text-field": [
-          "concat",
+          "coalesce",
           [
             "get",
-            "name:latin"
+            "name:en"
           ],
-          "\n",
           [
             "get",
-            "name:nonlatin"
+            "name"
           ]
         ],
         "visibility": "visible",
         "text-anchor": "bottom",
         "text-offset": [
           0,
-          0
+          -0.15
         ],
         "icon-optional": false,
         "text-max-width": 8,
         "icon-allow-overlap": true
       },
       "paint": {
-        "text-color": "hsl(0,0%,20%)",
-        "text-halo-color": "hsla(0,0%,100%,0.8)",
-        "text-halo-width": 1.2
-      },
-      "metadata": {},
-      "filter": [
-        "all",
-        [
-          "==",
-          "class",
-          "town"
-        ]
-      ]
-    },
-    {
-      "id": "city",
-      "type": "symbol",
-      "source": "openmaptiles",
-      "source-layer": "place",
-      "minzoom": 4.0,
-      "maxzoom": 16.0,
-      "layout": {
-        "icon-size": [
+        "icon-color": "hsl(0, 20%, 99%)",
+        "text-color": [
           "interpolate",
           [
-            "linear",
-            1
+            "linear"
           ],
           [
             "zoom"
           ],
-          4,
-          [
-            "case",
-            [
-              "==",
-              [
-                "get",
-                "capital"
-              ],
-              2
-            ],
-            1,
-            0.8
-          ],
-          8,
-          [
-            "case",
-            [
-              "==",
-              [
-                "get",
-                "capital"
-              ],
-              2
-            ],
-            1,
-            0.8
-          ],
-          12.9,
-          [
-            "case",
-            [
-              "==",
-              [
-                "get",
-                "capital"
-              ],
-              2
-            ],
-            1.2,
-            1
-          ],
-          13,
-          0
+          6,
+          "hsl(0,0%,20%)",
+          12,
+          "hsl(0,0%,0%)"
         ],
+        "text-halo-blur": 0.5,
+        "icon-halo-color": "hsl(0, 0%, 29%)",
+        "icon-halo-width": 1,
+        "text-halo-color": "hsl(0,0%,100%)",
+        "text-halo-width": 1
+      },
+      "metadata": {},
+      "filter": [
+        "==",
+        "class",
+        "town"
+      ]
+    },
+    {
+      "id": "City labels",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "minzoom": 4,
+      "maxzoom": 16,
+      "layout": {
+        "icon-size": 0.4,
         "text-font": [
           "Roboto Medium",
-          "Open Sans Semibold"
+          "Noto Sans Regular"
         ],
         "text-size": [
           "interpolate",
@@ -5186,36 +7783,30 @@
           [
             "zoom"
           ],
-          "circle-stroke",
+          "circle",
           13,
           ""
         ],
-        "text-field": [
-          "concat",
-          [
-            "get",
-            "name:latin"
-          ],
-          "\n",
-          [
-            "get",
-            "name:nonlatin"
-          ]
-        ],
+        "text-field": "{name:en}",
         "visibility": "visible",
         "text-anchor": "bottom",
         "text-offset": [
           0,
-          0
+          -0.15
         ],
         "icon-optional": false,
         "text-max-width": 8,
         "icon-allow-overlap": true
       },
       "paint": {
+        "icon-color": "hsl(0, 0%, 100%)",
         "text-color": "hsl(0,0%,20%)",
-        "text-halo-color": "hsla(0,0%,100%,0.8)",
-        "text-halo-width": 1.2
+        "icon-opacity": 1,
+        "text-halo-blur": 0.5,
+        "icon-halo-color": "hsl(0, 0%, 29%)",
+        "icon-halo-width": 1,
+        "text-halo-color": "hsl(0,0%,100%)",
+        "text-halo-width": 0.8
       },
       "metadata": {},
       "filter": [
@@ -5224,20 +7815,123 @@
           "==",
           "class",
           "city"
+        ],
+        [
+          "!=",
+          "capital",
+          2
         ]
       ]
     },
     {
-      "id": "country",
+      "id": "Capital city labels",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "place",
-      "minzoom": 1.0,
-      "maxzoom": 12.0,
+      "minzoom": 4,
+      "maxzoom": 16,
+      "layout": {
+        "icon-size": [
+          "interpolate",
+          [
+            "linear",
+            1
+          ],
+          [
+            "zoom"
+          ],
+          4,
+          0.45,
+          10,
+          0.5,
+          11,
+          0.6
+        ],
+        "text-font": [
+          "Roboto Medium",
+          "Noto Sans Regular"
+        ],
+        "text-size": [
+          "interpolate",
+          [
+            "linear",
+            1
+          ],
+          [
+            "zoom"
+          ],
+          4,
+          14,
+          8,
+          18,
+          12,
+          24,
+          16,
+          32
+        ],
+        "icon-image": [
+          "step",
+          [
+            "zoom"
+          ],
+          "circle",
+          13,
+          ""
+        ],
+        "text-field": "{name:en}",
+        "visibility": "visible",
+        "text-anchor": "bottom",
+        "text-offset": [
+          0,
+          -0.15
+        ],
+        "icon-optional": false,
+        "text-max-width": 8,
+        "symbol-sort-key": [
+          "to-number",
+          [
+            "get",
+            "rank"
+          ]
+        ],
+        "icon-allow-overlap": true
+      },
+      "paint": {
+        "icon-color": "hsl(0, 0%, 100%)",
+        "text-color": "hsl(0,0%,20%)",
+        "icon-opacity": 1,
+        "text-halo-blur": 0.5,
+        "icon-halo-color": "hsl(0, 0%, 29%)",
+        "icon-halo-width": 1,
+        "text-halo-color": "hsl(0,0%,100%)",
+        "text-halo-width": 0.8
+      },
+      "metadata": {},
+      "filter": [
+        "all",
+        [
+          "==",
+          "class",
+          "city"
+        ],
+        [
+          "==",
+          "capital",
+          2
+        ]
+      ]
+    },
+    {
+      "id": "Country labels",
+      "type": "symbol",
+      "source": "openmaptiles",
+      "source-layer": "place",
+      "minzoom": 1,
+      "maxzoom": 12,
       "layout": {
         "text-font": [
           "Roboto Medium",
-          "Open Sans Semibold"
+          "Noto Sans Regular"
         ],
         "text-size": [
           "interpolate",
@@ -5281,7 +7975,7 @@
             23
           ]
         ],
-        "text-field": "{name:latin}",
+        "text-field": "{name:en}",
         "visibility": "visible",
         "text-padding": 1,
         "text-max-width": {
@@ -5301,7 +7995,7 @@
         "text-letter-spacing": 0.07
       },
       "paint": {
-        "text-color": "hsl(240,6%,29%)",
+        "text-color": "hsl(0, 0%, 20%)",
         "text-opacity": [
           "interpolate",
           [
@@ -5354,9 +8048,9 @@
             1
           ]
         ],
-        "text-halo-blur": 1,
-        "text-halo-color": "hsla(0,0%,100%,1)",
-        "text-halo-width": 0.8
+        "text-halo-blur": 0.8,
+        "text-halo-color": "hsl(0,0%,100%)",
+        "text-halo-width": 1
       },
       "metadata": {},
       "filter": [
@@ -5373,15 +8067,15 @@
       ]
     },
     {
-      "id": "continent",
+      "id": "Continent labels",
       "type": "symbol",
       "source": "openmaptiles",
       "source-layer": "place",
-      "maxzoom": 1.0,
+      "maxzoom": 1,
       "layout": {
         "text-font": [
           "Roboto Medium",
-          "Open Sans Semibold"
+          "Noto Sans Regular"
         ],
         "text-size": {
           "stops": [
@@ -5395,25 +8089,22 @@
             ]
           ]
         },
-        "text-field": "{name:latin}",
+        "text-field": "{name:en}",
         "visibility": "visible",
         "text-justify": "center",
         "text-transform": "uppercase"
       },
       "paint": {
-        "text-color": "hsl(0,5%,33%)",
-        "text-halo-blur": 0.5,
-        "text-halo-color": "hsla(0,0%,100%,0.7)",
+        "text-color": "hsl(0,0%,19%)",
+        "text-halo-blur": 1,
+        "text-halo-color": "hsl(0,0%,100%)",
         "text-halo-width": 1
       },
       "metadata": {},
       "filter": [
-        "all",
-        [
-          "==",
-          "class",
-          "continent"
-        ]
+        "==",
+        "class",
+        "continent"
       ]
     }
   ]
