@@ -1,11 +1,12 @@
 import mapboxgl = require('mapbox-gl');
 import { Point } from 'mapbox-gl';
-import { InspectControl } from 'mapbox-gl-controls';
-import { StylesControl } from 'mapbox-gl-controls';
-import MapboxGeocoder = require("@mapbox/mapbox-gl-geocoder")
+import InspectControl from '@mapbox-controls/inspect';
+import StylesControl from '@mapbox-controls/styles';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
-import 'mapbox-gl-controls/lib/controls.css';
+import '@mapbox-controls/styles/src/index.css';
+import '@mapbox-controls/inspect/src/index.css';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 
 import { propsToTable } from './popup';
@@ -88,5 +89,5 @@ map.addControl(
         visualizePitch: true,
     })
 )
-map.addControl(new InspectControl(), 'bottom-right');
+map.addControl(new InspectControl({ console: true }), 'bottom-right');
 map.addControl(new IDEditorLinkControl(), 'bottom-right');

@@ -19,7 +19,7 @@
     "sources": {
         "openmaptiles": {
             "type": "vector",
-            "url": "mbtiles://{openmaptiles-hungary}"
+            "url": "mbtiles://{openmaptiles-europe-cycling}"
         },
         "bm-poi-all-pois-data": {
             "type": "vector",
