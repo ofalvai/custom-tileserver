@@ -5,7 +5,7 @@
   },
   "browserslist": "> 5%, last 3 versions, not dead, not op_mini all, not kaios > 0, not and_uc > 0",
   "dependencies": {
-    "@mapbox-controls/inspect": "^1.2.0",
+    "@mapbox-controls/inspect": "^2.0.0",
     "@mapbox-controls/styles": "^1.2.0",
     "@mapbox/mapbox-gl-geocoder": "^5.0.1",
     "mapbox-gl": "^3.3.0"
