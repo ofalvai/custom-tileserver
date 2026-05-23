@@ -11,7 +11,7 @@ COPY src src
 COPY .env .env
 RUN npm run build
 
-FROM busybox:1.37
+FROM busybox:1.38
 
 COPY --from=builder /app/dist .
 
