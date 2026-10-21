@@ -12,10 +12,10 @@
   },
   "devDependencies": {
     "@types/mapbox__mapbox-gl-geocoder": "^5.0.0",
-    "@types/node": "^22.0.0",
+    "@types/node": "^24.0.0",
     "parcel": "^2.7.0"
   },
   "engines": {
-    "node": "22.x"
+    "node": "24.x"
   }
 }
